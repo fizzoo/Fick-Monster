@@ -3,7 +3,13 @@ package inda13projekt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.newdawn.slick.*;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * Starts the game and handles it's loop
@@ -61,6 +67,18 @@ public class Game extends BasicGame {
 		Player player = new Player(gc);
 		player.init(100, 100, 1, 1, 10, 20, null);
 		objects.add(player);
+		drawMap();
+	}
+
+	private void drawMap() {
+		try {
+			TiledMap map = new TiledMap("././res/untitled.tmx");
+			map.render(0, 0);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -77,7 +95,6 @@ public class Game extends BasicGame {
 
 		while (it.hasNext()) {
 			it.next().update();
-			;
 		}
 	}
 
@@ -93,9 +110,9 @@ public class Game extends BasicGame {
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		Iterator<GameObject> it = objects.iterator();
 
+		drawMap(); // TODO: ILLA
 		while (it.hasNext()) {
 			it.next().render(g);
-			;
 		}
 	}
 
