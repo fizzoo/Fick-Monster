@@ -3,17 +3,12 @@ package inda13projekt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 /**
  * Starts the game and handles it's loop
  * 
- * @author Alex
+ * @author Alex Sundström
  * 
  */
 public class Game extends BasicGame {
