@@ -3,15 +3,20 @@ package inda13projekt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.newdawn.slick.*;
-import org.lwjgl.*;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 
 /**
  * Starts the game and handles it's loop
- * @author Alex 
- *
+ * 
+ * @author Alex
+ * 
  */
-public class Game extends BasicGame{
+public class Game extends BasicGame {
 	/**
 	 * Used to create the display
 	 */
@@ -24,16 +29,17 @@ public class Game extends BasicGame{
 	 * Used to iterate over the game objects (the player, npc:s etc)
 	 */
 	public static LinkedList<GameObject> objects;
-	
+
 	/**
 	 * Constructor, generates the display name
 	 */
 	public Game() {
 		super("Fick Monster");
 	}
-	
+
 	/**
 	 * creates the display and starts the app
+	 * 
 	 * @param args
 	 * @throws SlickException
 	 */
@@ -44,11 +50,13 @@ public class Game extends BasicGame{
 		app.setVSync(true);
 		app.start();
 	}
-	
-	/** (non-Javadoc)
+
+	/**
+	 * (non-Javadoc)
+	 * 
 	 * @see org.newdawn.slick.BasicGame#init(org.newdawn.slick.GameContainer)
 	 * 
-	 * initialize the game
+	 *      initialize the game
 	 */
 	@Override
 	public void init(GameContainer gc) throws SlickException {
@@ -56,35 +64,43 @@ public class Game extends BasicGame{
 		input = gc.getInput();
 		objects = new LinkedList<GameObject>();
 		Player player = new Player(gc);
-		player.init(100, 100, 1, 1, 20, 20, null);
+		player.init(100, 100, 1, 1, 10, 20, null);
 		objects.add(player);
 	}
-	
-	/** (non-Javadoc)
-	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer, int)
+
+	/**
+	 * (non-Javadoc)
 	 * 
-	 * updates the game, is called automatically 
+	 * @see org.newdawn.slick.BasicGame#update(org.newdawn.slick.GameContainer,
+	 *      int)
+	 * 
+	 *      updates the game, is called automatically
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		Iterator<GameObject> it = objects.iterator();
-		
-		while(it.hasNext()) {
-			it.next().update();;
+
+		while (it.hasNext()) {
+			it.next().update();
+			;
 		}
 	}
-	
-	/** (non-Javadoc)
-	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+
+	/**
+	 * (non-Javadoc)
 	 * 
-	 * renders the game, is called automatically
+	 * @see org.newdawn.slick.Game#render(org.newdawn.slick.GameContainer,
+	 *      org.newdawn.slick.Graphics)
+	 * 
+	 *      renders the game, is called automatically
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		Iterator<GameObject> it = objects.iterator();
-		
-		while(it.hasNext()) {
-			it.next().render(g);;
+
+		while (it.hasNext()) {
+			it.next().render(g);
+			;
 		}
 	}
 
