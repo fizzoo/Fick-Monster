@@ -73,6 +73,19 @@ public class Player extends GameObject {
 			x += velX;
 		}
 		super.update();
+		
+		if(x < 0 + width / 2) {
+			x = 0 + width / 2;
+		}
+		else if (x > 640 - width / 2){
+			x = 640 - width / 2;
+		}
+		if(y < 0 + height / 2) {
+			y = 0 + height / 2;
+		}
+		else if (y > 480 - height / 2){
+			y = 480 - height / 2;
+		}
 	}
 	
 	/**
