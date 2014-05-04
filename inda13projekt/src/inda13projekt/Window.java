@@ -1,4 +1,4 @@
-package inda13projekt.Interfaces;
+package inda13projekt;
 
 /**
  * Used to create a simple window
