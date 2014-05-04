@@ -5,20 +5,40 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 
+/**
+ * A class used to represent the player. Handles the players movements. 
+ * @author Alex
+ *
+ */
 public class Player extends GameObject {
+	/**
+	 * Handles the players movements. 
+	 */
 	public Input input;
 	
+	/**
+	 * inits the input
+	 * @param gc part of slick2d
+	 */
 	public Player(GameContainer gc) {
 		input = gc.getInput();
 	}
 	
+	/**
+	 * inits the player
+	 */
+	@Override
 	public void init (final float x, final float y, final float velX, 
 			final float velY, final int width, final int height, 
-			final Image image) {
-		super.init(x, y, velX, velY, width, height, image);
+			final Image sprite) {
+		super.init(x, y, velX, velY, width, height, sprite);
 		
 	}
 
+	/**
+	 * updates the player
+	 */
+	@Override
 	public void update() {
 		/*if(input.isKeyDown(Input.KEY_W)) {
 			dY = -1;
@@ -55,6 +75,10 @@ public class Player extends GameObject {
 		super.update();
 	}
 	
+	/**
+	 * renders the player
+	 */
+	@Override
 	public void render(Graphics g) {
 		super.render(g);
 	}
