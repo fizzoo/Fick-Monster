@@ -25,4 +25,10 @@ public interface Window {
 	 */
 	public void render(GameContainer gc, Graphics g, Camera camera)
 			throws SlickException;
+	
+	/**
+	 * handles window transition
+	 * @return 
+	 */
+	public Window getNextWindow();
 }

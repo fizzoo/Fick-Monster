@@ -19,6 +19,7 @@ public class MenuWindow implements Window {
 	private ArrayList<Button> buttons;
 	private Input input;
 	private int currentButton;
+	private Window nextWindow;
 	
 	final String name = "Menu";
 	/**
@@ -26,7 +27,7 @@ public class MenuWindow implements Window {
 	 * @throws SlickException 
 	 * 
 	 */
-	public MenuWindow(GameContainer gc, Input input) throws SlickException {
+	public MenuWindow(Input input) throws SlickException {
 		background = new Image("././res/bgi_test.bmp");
 		buttons = new ArrayList<Button>();
 		buttons.add(new Button(320, 128, "Start Game", 0));
@@ -34,6 +35,7 @@ public class MenuWindow implements Window {
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
 		this.input = input;
+		nextWindow = null;
 	}
 	
 	/**
@@ -83,7 +85,18 @@ public class MenuWindow implements Window {
 		}
 		
 		if(input.isKeyPressed(Input.KEY_X)) {
-			
+			if(currentButton == 0) {
+				nextWindow = new OverWorldWindow(input);
+			}
 		}
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Window getNextWindow() {
+		// TODO Auto-generated method stub
+		return nextWindow;
 	}
 }

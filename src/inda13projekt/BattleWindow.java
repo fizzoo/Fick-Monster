@@ -31,4 +31,13 @@ public class BattleWindow implements Window {
 
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public Window getNextWindow() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -30,14 +30,9 @@ public class OverWorldWindow implements Window {
 
 		objects = new ArrayList<>();
 		objects.add(player);
-	}
-
-	/**
-	 * 
-	 */
-	public OverWorldWindow() {
+		
 		chooseMap("untitled");
-		this.input = input;
+		this.input = input; 
 	}
 
 	private void chooseMap(String ref) {
@@ -84,6 +79,15 @@ public class OverWorldWindow implements Window {
 		while (it.hasNext()) {
 			it.next().render(g);
 		}
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public Window getNextWindow() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
