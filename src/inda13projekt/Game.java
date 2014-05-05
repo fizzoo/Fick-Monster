@@ -6,7 +6,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * Starts the game and handles it's loop
@@ -15,9 +14,9 @@ import org.newdawn.slick.tiled.TiledMap;
  * 
  */
 public class Game extends BasicGame {
-	
+
 	private static Window currentWindow;
-	
+
 	/**
 	 * Used to create the display
 	 */
@@ -58,21 +57,9 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		currentWindow = new MenuWindow();
+		currentWindow = new OverWorldWindow();
 		gc.setShowFPS(false);
 		input = gc.getInput();
-		//drawMap();
-	}
-
-	private void drawMap() {
-		try {
-			TiledMap map = new TiledMap("././res/untitled.tmx");
-			map.render(0, 0);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	/**
@@ -85,12 +72,12 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		//Iterator<GameObject> it = objects.iterator();
+		// Iterator<GameObject> it = objects.iterator();
 
-		//while (it.hasNext()) {
-		//	it.next().update();
-		//}
-		
+		// while (it.hasNext()) {
+		// it.next().update();
+		// }
+
 		currentWindow.update(gc, delta);
 	}
 
@@ -104,13 +91,13 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		//Iterator<GameObject> it = objects.iterator();
+		// Iterator<GameObject> it = objects.iterator();
 
-		//drawMap(); // TODO: ILLA
-		//while (it.hasNext()) {
-		//	it.next().render(g);
-		//}
-		
+		// drawMap(); // TODO: ILLA
+		// while (it.hasNext()) {
+		// it.next().render(g);
+		// }
+
 		currentWindow.render(gc, g, null);
 	}
 

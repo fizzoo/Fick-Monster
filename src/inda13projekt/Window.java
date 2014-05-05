@@ -13,13 +13,16 @@ import org.newdawn.slick.SlickException;
 public interface Window {
 	/**
 	 * updates all the objects in the window
-	 * @throws SlickException 
+	 * 
+	 * @throws SlickException
 	 */
 	public void update(GameContainer gc, int delta) throws SlickException;
-	
+
 	/**
 	 * renders all the objects in the window
-	 * @throws SlickException 
+	 * 
+	 * @throws SlickException
 	 */
-	public void render(GameContainer gc, Graphics g, Camera camera) throws SlickException;
+	public void render(GameContainer gc, Graphics g, Camera camera)
+			throws SlickException;
 }
