@@ -30,9 +30,9 @@ public class OverWorldWindow implements Window {
 
 		objects = new ArrayList<>();
 		objects.add(player);
-		
+
 		chooseMap("untitled");
-		this.input = input; 
+		this.input = input;
 	}
 
 	private void chooseMap(String ref) {
@@ -50,13 +50,13 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		if (input.isKeyDown(Input.KEY_W))
+		if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 			player.moveUp();
-		if (input.isKeyDown(Input.KEY_S))
+		if (input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
 			player.moveDown();
-		if (input.isKeyDown(Input.KEY_A))
+		if (input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 			player.moveLeft();
-		if (input.isKeyDown(Input.KEY_D))
+		if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 			player.moveRight();
 
 		Iterator<GameObject> it = objects.iterator();
