@@ -26,7 +26,7 @@ public class OverWorldWindow implements Window {
 	 */
 	public OverWorldWindow(Input input) {
 		player = new Player();
-		player.init(0, 0, 1, 1, 20, 20, null);
+		player.init(16, 16, 1, 1, 32, 32, null);
 
 		objects = new ArrayList<>();
 		objects.add(player);

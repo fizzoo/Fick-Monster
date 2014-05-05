@@ -10,6 +10,10 @@ import org.newdawn.slick.Image;
  * 
  */
 public class Player extends GameObject {
+	private int gridX;
+	private int gridY;
+	private boolean isMoving;
+
 	/**
 	 * inits the player
 	 */
@@ -18,35 +22,48 @@ public class Player extends GameObject {
 			final float velY, final int width, final int height,
 			final Image sprite) {
 		super.init(x, y, velX, velY, width, height, sprite);
-
+		gridX = 0;
+		gridY = 0;
 	}
 
 	/**
 	 * 
 	 */
 	public void moveUp() {
-		y -= velY;
+		if (!isMoving) {
+			isMoving = true;
+			gridY--;
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void moveDown() {
-		y += velY;
+		if (!isMoving) {
+			isMoving = true;
+			gridY++;
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void moveLeft() {
-		x -= velX;
+		if (!isMoving) {
+			isMoving = true;
+			gridX--;
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void moveRight() {
-		x += velX;
+		if (!isMoving) {
+			isMoving = true;
+			gridX++;
+		}
 	}
 
 	/**
@@ -54,27 +71,19 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void update() {
-		/*
-		 * if(input.isKeyDown(Input.KEY_W)) { dY = -1; }
-		 * if(input.isKeyDown(Input.KEY_S)) { dY = 1; }
-		 * if(!input.isKeyDown(Input.KEY_W) && !input.isKeyDown(Input.KEY_S)) {
-		 * dY = 0; } if(input.isKeyDown(Input.KEY_A)) { dX = -1; }
-		 * if(input.isKeyDown(Input.KEY_D)) { dX = 1; } if
-		 * (!input.isKeyDown(Input.KEY_A) && !input.isKeyDown(Input.KEY_D)){ dX
-		 * = 0; }
-		 */
-		super.update();
-
-		if (x < 0 + width / 2) {
-			x = 0 + width / 2;
-		} else if (x > 640 - width / 2) {
-			x = 640 - width / 2;
+		if (y < (gridY * 32 + height / 2)) {
+			y += velY;
+		} else if (y > (gridY * 32 + height / 2)) {
+			y -= velY;
+		} else if (x < (gridX * 32 + width / 2)) { // else since you can't walk
+													// diagonally
+			x += velX;
+		} else if (x > (gridX * 32 + width / 2)) {
+			x -= velX;
+		} else { // finished walking
+			isMoving = false;
 		}
-		if (y < 0 + height / 2) {
-			y = 0 + height / 2;
-		} else if (y > 480 - height / 2) {
-			y = 480 - height / 2;
-		}
+		// super.update();// Uses dX/dY
 	}
 
 	/**
