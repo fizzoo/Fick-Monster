@@ -1,7 +1,6 @@
 package inda13projekt;
 
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 
 /**
  * A class used to represent the player. Handles the players movements.
@@ -15,15 +14,12 @@ public class Player extends GameObject {
 	private boolean isMoving;
 
 	/**
-	 * inits the player
+	 * Inits the player to specified coordinate.
 	 */
-	@Override
-	public void init(final float x, final float y, final float velX,
-			final float velY, final int width, final int height,
-			final Image sprite) {
-		super.init(x, y, velX, velY, width, height, sprite);
-		gridX = 0;
-		gridY = 0;
+	public void init(int gridX, int gridY) {
+		this.gridX = gridX;
+		this.gridY = gridY;
+		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32, null);
 	}
 
 	/**
