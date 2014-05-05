@@ -22,6 +22,7 @@ public class MenuWindow implements Window {
 	
 	final String name = "Menu";
 	/**
+	 * inits the window and it's buttons as well as the windows background image
 	 * @throws SlickException 
 	 * 
 	 */
@@ -36,7 +37,7 @@ public class MenuWindow implements Window {
 	}
 	
 	/**
-	 * 
+	 * updates the window and checks for which button is currently selected. 
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -53,7 +54,7 @@ public class MenuWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * draws the windows buttons
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g, Camera camera) throws SlickException {
@@ -65,7 +66,8 @@ public class MenuWindow implements Window {
 	}
 	
 	/**
-	 * 
+	 * handles input for the menu window. You can select the different buttons and press them to 
+	 * either move to another screen or exit the game. 
 	 */
 	private void handleMenuInput() {
 		if(input.isKeyPressed(Input.KEY_UP)) {
@@ -78,6 +80,10 @@ public class MenuWindow implements Window {
 			if(currentButton < buttons.size() - 1) {
 				currentButton++;
 			}
+		}
+		
+		if(input.isKeyPressed(Input.KEY_X)) {
+			
 		}
 	}
 }

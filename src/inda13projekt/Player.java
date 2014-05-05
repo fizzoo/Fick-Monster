@@ -21,18 +21,30 @@ public class Player extends GameObject {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void moveUp() {
 		y -= velY;
 	}
 
+	/**
+	 * 
+	 */
 	public void moveDown() {
 		y += velY;
 	}
 
+	/**
+	 * 
+	 */
 	public void moveLeft() {
 		x -= velX;
 	}
 
+	/**
+	 * 
+	 */
 	public void moveRight() {
 		x += velX;
 	}

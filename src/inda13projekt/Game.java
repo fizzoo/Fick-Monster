@@ -45,6 +45,7 @@ public class Game extends BasicGame {
 		app.setMouseGrabbed(true);
 		app.setDisplayMode(640, 480, false);
 		app.setVSync(true);
+		app.setTargetFrameRate(60);
 		app.start();
 	}
 
@@ -58,11 +59,8 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		input = gc.getInput();
-<<<<<<< HEAD
 		currentWindow = new MenuWindow(gc, input);
-=======
-		currentWindow = new OverWorldWindow(input);
->>>>>>> ba5e983a250b1e90a4eae4af11f1d4cc69c2c91e
+
 		gc.setShowFPS(false);
 	}
 

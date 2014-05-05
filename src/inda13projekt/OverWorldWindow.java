@@ -21,20 +21,21 @@ public class OverWorldWindow implements Window {
 	private Input input;
 	private Player player;
 
+	/**
+	 * @param input
+	 */
 	public OverWorldWindow(Input input) {
 		player = new Player();
 		player.init(0, 0, 1, 1, 20, 20, null);
 
 		objects = new ArrayList<>();
 		objects.add(player);
+	}
 
-<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	public OverWorldWindow() {
-=======
->>>>>>> ba5e983a250b1e90a4eae4af11f1d4cc69c2c91e
 		chooseMap("untitled");
 		this.input = input;
 	}
