@@ -12,12 +12,18 @@ import org.newdawn.slick.SlickException;
  */
 public class BattleWindow implements Window {
 
+	/**
+	 * 
+	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void render(GameContainer gc, Graphics g, Camera camera)
 			throws SlickException {

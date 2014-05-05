@@ -14,6 +14,9 @@ import org.newdawn.slick.tiled.TiledMap;
 public class OverWorldWindow implements Window {
 	private TiledMap map;
 
+	/**
+	 * 
+	 */
 	public OverWorldWindow() {
 		chooseMap("untitled");
 	}
@@ -28,12 +31,18 @@ public class OverWorldWindow implements Window {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void render(GameContainer gc, Graphics g, Camera camera)
 			throws SlickException {

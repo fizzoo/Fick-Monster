@@ -57,9 +57,9 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		currentWindow = new OverWorldWindow();
-		gc.setShowFPS(false);
 		input = gc.getInput();
+		currentWindow = new MenuWindow(gc, input);
+		gc.setShowFPS(false);
 	}
 
 	/**
@@ -100,5 +100,14 @@ public class Game extends BasicGame {
 
 		currentWindow.render(gc, g, null);
 	}
-
+	
+	/**
+	 * 
+	 */
+	@Override
+	public void keyPressed(int key, char c) {
+		if (key == Input.KEY_ESCAPE) {
+			app.exit();
+		}
+	}
 }
