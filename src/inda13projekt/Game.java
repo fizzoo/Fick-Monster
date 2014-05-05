@@ -57,9 +57,9 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		currentWindow = new OverWorldWindow();
-		gc.setShowFPS(false);
 		input = gc.getInput();
+		currentWindow = new OverWorldWindow(input);
+		gc.setShowFPS(false);
 	}
 
 	/**
@@ -72,12 +72,6 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		// Iterator<GameObject> it = objects.iterator();
-
-		// while (it.hasNext()) {
-		// it.next().update();
-		// }
-
 		currentWindow.update(gc, delta);
 	}
 
@@ -91,13 +85,6 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		// Iterator<GameObject> it = objects.iterator();
-
-		// drawMap(); // TODO: ILLA
-		// while (it.hasNext()) {
-		// it.next().render(g);
-		// }
-
 		currentWindow.render(gc, g, null);
 	}
 
