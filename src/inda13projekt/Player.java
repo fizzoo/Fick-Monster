@@ -1,9 +1,7 @@
 package inda13projekt;
 
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 
 /**
  * A class used to represent the player. Handles the players movements.
@@ -13,21 +11,6 @@ import org.newdawn.slick.Input;
  */
 public class Player extends GameObject {
 	/**
-	 * Handles the players movements.
-	 */
-	public Input input;
-
-	/**
-	 * inits the input
-	 * 
-	 * @param gc
-	 *            part of slick2d
-	 */
-	public Player(GameContainer gc) {
-		input = gc.getInput();
-	}
-
-	/**
 	 * inits the player
 	 */
 	@Override
@@ -36,6 +19,22 @@ public class Player extends GameObject {
 			final Image sprite) {
 		super.init(x, y, velX, velY, width, height, sprite);
 
+	}
+
+	public void moveUp() {
+		y -= velY;
+	}
+
+	public void moveDown() {
+		y += velY;
+	}
+
+	public void moveLeft() {
+		x -= velX;
+	}
+
+	public void moveRight() {
+		x += velX;
 	}
 
 	/**
@@ -52,18 +51,6 @@ public class Player extends GameObject {
 		 * (!input.isKeyDown(Input.KEY_A) && !input.isKeyDown(Input.KEY_D)){ dX
 		 * = 0; }
 		 */
-		if (input.isKeyDown(Input.KEY_W)) {
-			y -= velY;
-		}
-		if (input.isKeyDown(Input.KEY_S)) {
-			y += velY;
-		}
-		if (input.isKeyDown(Input.KEY_A)) {
-			x -= velX;
-		}
-		if (input.isKeyDown(Input.KEY_D)) {
-			x += velX;
-		}
 		super.update();
 
 		if (x < 0 + width / 2) {
