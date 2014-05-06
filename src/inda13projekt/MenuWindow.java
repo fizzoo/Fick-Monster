@@ -9,11 +9,10 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
 /**
- * The menu, the first window the user is presented. Here the user can press
- * buttons which will change the game state
- * 
+ * The menu, the first window the user is presented. Here the user can 
+ * press buttons which will change the game state
  * @author Alex
- * 
+ *
  */
 public class MenuWindow implements Window {
 	private Image background;
@@ -21,13 +20,11 @@ public class MenuWindow implements Window {
 	private Input input;
 	private int currentButton;
 	private Window nextWindow;
-
+	
 	final String name = "Menu";
-
 	/**
 	 * inits the window and it's buttons as well as the windows background image
-	 * 
-	 * @throws SlickException
+	 * @throws SlickException 
 	 * 
 	 */
 	public MenuWindow(Input input) throws SlickException {
@@ -40,17 +37,18 @@ public class MenuWindow implements Window {
 		this.input = input;
 		nextWindow = null;
 	}
-
+	
 	/**
-	 * updates the window and checks for which button is currently selected.
+	 * updates the window and checks for which button is currently selected. 
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		for (Button button : buttons) {
+		for(Button button : buttons) {
 			button.update();
-			if (button.getID() == currentButton) {
+			if(button.getID() == currentButton) {
 				button.setImage(true);
-			} else {
+			}
+			else {
 				button.setImage(false);
 			}
 		}
@@ -64,37 +62,40 @@ public class MenuWindow implements Window {
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		background.draw(0, 0);
-		for (Button button : buttons) {
+		for(Button button : buttons) {
 			button.render(g);
 		}
 	}
-
+	
 	/**
-	 * handles input for the menu window. You can select the different buttons
-	 * and press them to either move to another screen or exit the game.
+	 * handles input for the menu window. You can select the different buttons and press them to 
+	 * either move to another screen or exit the game. 
 	 */
 	private void handleMenuInput() {
-		if (input.isKeyPressed(Input.KEY_UP)) {
-			if (currentButton > 0) {
+		if(input.isKeyPressed(Input.KEY_UP)) {
+			if(currentButton > 0) {
 				currentButton--;
 			}
 		}
-
-		if (input.isKeyPressed(Input.KEY_DOWN)) {
-			if (currentButton < buttons.size() - 1) {
+		
+		if(input.isKeyPressed(Input.KEY_DOWN)) {
+			if(currentButton < buttons.size() - 1) {
 				currentButton++;
 			}
 		}
-
-		if (input.isKeyPressed(Input.KEY_X)) {
-			if (currentButton == 0) {
-				nextWindow = new OverWorldWindow(input);
+		
+		if(input.isKeyPressed(Input.KEY_X)) {
+			switch(currentButton){
+			case 0: nextWindow = new OverWorldWindow(input);
+					break;
+			case 1: nextWindow = new ExitWindow();
+					break;
 			}
 		}
 	}
 
 	/**
-	 * Changes window when not null.
+	 * 
 	 */
 	@Override
 	public Window getNextWindow() {

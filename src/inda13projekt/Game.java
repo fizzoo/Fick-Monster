@@ -75,9 +75,11 @@ public class Game extends BasicGame {
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		currentWindow.update(gc, delta);
-		if (currentWindow.getNextWindow() != null) {
+		if(currentWindow.getNextWindow() != null) {
 			currentWindow = currentWindow.getNextWindow();
-
+			if(currentWindow instanceof ExitWindow) {
+				app.exit();
+			}
 		}
 	}
 
@@ -92,15 +94,5 @@ public class Game extends BasicGame {
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		currentWindow.render(gc, g);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public void keyPressed(int key, char c) {
-		if (key == Input.KEY_ESCAPE) {
-			app.exit();
-		}
 	}
 }
