@@ -23,12 +23,12 @@ public interface Window {
 	 * 
 	 * @throws SlickException
 	 */
-	public void render(GameContainer gc, Graphics g, Camera camera)
-			throws SlickException;
-	
+	public void render(GameContainer gc, Graphics g) throws SlickException;
+
 	/**
 	 * handles window transition
-	 * @return 
+	 * 
+	 * @return
 	 */
 	public Window getNextWindow();
 }

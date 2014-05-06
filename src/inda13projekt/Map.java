@@ -3,12 +3,24 @@ package inda13projekt;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+/**
+ * Class managing a map and its properties.
+ * 
+ * @author Fizzo
+ * 
+ */
 public class Map {
 	private TiledMap map;
 	private boolean[][] blocked;
 	private int width;
 	private int height;
 
+	/**
+	 * Creates a new map, initializes collision.
+	 * 
+	 * @param ref
+	 *            Name of the mapfile
+	 */
 	public Map(String ref) {
 		try {
 			map = new TiledMap("././res/" + ref + ".tmx");
@@ -20,16 +32,24 @@ public class Map {
 		width = map.getWidth();
 		height = map.getHeight();
 
+		int blockLayer = map.getLayerIndex("Collidable");
 		blocked = new boolean[width][height];
 		for (int i = 0; i < map.getWidth(); i++) {
 			for (int j = 0; j < map.getHeight(); j++) {
-				if (map.getTileId(i, j, 1) != 0) {
+				if (map.getTileId(i, j, blockLayer) != 0) {
 					blocked[i][j] = true;
 				}
 			}
 		}
 	}
 
+	/**
+	 * @param x
+	 *            coordinate to check, in tiles
+	 * @param y
+	 *            coordinate to check, in tiles
+	 * @return true if coordinate is blocked
+	 */
 	public boolean isBlocked(int x, int y) {
 		if (x < 0)
 			return true;
@@ -43,6 +63,12 @@ public class Map {
 		return blocked[x][y];
 	}
 
+	/**
+	 * @param x
+	 *            x location to start rendering, in pixels
+	 * @param y
+	 *            y location to start rendering, in pixels
+	 */
 	public void render(int x, int y) {
 		map.render(x, y);
 	}

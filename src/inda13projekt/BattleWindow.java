@@ -25,14 +25,13 @@ public class BattleWindow implements Window {
 	 * 
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g, Camera camera)
-			throws SlickException {
+	public void render(GameContainer gc, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 
 	}
 
 	/**
-	 * 
+	 * Changes window when not null.
 	 */
 	@Override
 	public Window getNextWindow() {

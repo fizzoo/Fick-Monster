@@ -21,7 +21,10 @@ public class OverWorldWindow implements Window {
 	private Player player;
 
 	/**
+	 * Creates a new map and places the player on it.
+	 * 
 	 * @param input
+	 *            User input
 	 */
 	public OverWorldWindow(Input input) {
 		map = new Map("untitled");
@@ -36,7 +39,7 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Checks for input and updates all objects.
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -57,11 +60,10 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Renders map and all objects.
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g, Camera camera)
-			throws SlickException {
+	public void render(GameContainer gc, Graphics g) throws SlickException {
 		map.render(0, 0);
 
 		Iterator<GameObject> it = objects.iterator();
@@ -72,7 +74,7 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Changes window when not null.
 	 */
 	@Override
 	public Window getNextWindow() {

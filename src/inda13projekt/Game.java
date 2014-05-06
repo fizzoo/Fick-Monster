@@ -91,7 +91,7 @@ public class Game extends BasicGame {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		currentWindow.render(gc, g, null);
+		currentWindow.render(gc, g);
 	}
 
 	/**

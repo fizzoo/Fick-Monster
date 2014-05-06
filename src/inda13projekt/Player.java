@@ -25,7 +25,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
+	 * Tries to move player up one grid, if possible.
 	 */
 	public void moveUp() {
 		if (!isMoving) {
@@ -38,7 +38,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
+	 * Tries to move player down one grid, if possible.
 	 */
 	public void moveDown() {
 		if (!isMoving) {
@@ -51,7 +51,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
+	 * Tries to move player left one grid, if possible.
 	 */
 	public void moveLeft() {
 		if (!isMoving) {
@@ -64,7 +64,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
+	 * Tries to move player right one grid, if possible.
 	 */
 	public void moveRight() {
 		if (!isMoving) {
@@ -77,7 +77,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * updates the player
+	 * Updates the player location
 	 */
 	@Override
 	public void update() {
@@ -86,7 +86,7 @@ public class Player extends GameObject {
 		} else if (y > (gridY * 32 + height / 2)) {
 			y -= velY;
 		} else if (x < (gridX * 32 + width / 2)) { // else since you can't walk
-													// diagonally
+													// diagonally anyway
 			x += velX;
 		} else if (x > (gridX * 32 + width / 2)) {
 			x -= velX;
@@ -97,7 +97,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * renders the player
+	 * Renders the player
 	 */
 	@Override
 	public void render(Graphics g) {
