@@ -7,7 +7,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * Manages input, logic and drawing whilst in the overworld.
@@ -16,37 +15,31 @@ import org.newdawn.slick.tiled.TiledMap;
  * 
  */
 public class OverWorldWindow implements Window {
-	private TiledMap map;
+	private Map map;
 	private ArrayList<GameObject> objects;
 	private Input input;
 	private Player player;
 
 	/**
+	 * Creates a new map and places the player on it.
+	 * 
 	 * @param input
+	 *            User input
 	 */
 	public OverWorldWindow(Input input) {
+		map = new Map("untitled");
+
 		player = new Player();
-		player.init(0, 0, 1, 1, 20, 20, null);
+		player.init(2, 5, map);
 
 		objects = new ArrayList<>();
 		objects.add(player);
 
-		chooseMap("untitled");
 		this.input = input;
 	}
 
-	private void chooseMap(String ref) {
-		try {
-			map = new TiledMap("././res/" + ref + ".tmx");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
 	/**
-	 * 
+	 * Checks for input and updates all objects.
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -67,11 +60,10 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Renders map and all objects.
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g, Camera camera)
-			throws SlickException {
+	public void render(GameContainer gc, Graphics g) throws SlickException {
 		map.render(0, 0);
 
 		Iterator<GameObject> it = objects.iterator();
@@ -82,7 +74,7 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Changes window when not null.
 	 */
 	@Override
 	public Window getNextWindow() {

@@ -3,9 +3,14 @@
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
   <image source="test.png" width="64" height="64"/>
  </tileset>
- <layer name="Tile Layer 1" width="25" height="20">
+ <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NmYGBgHsUUYZZB4AZquI2JDDzQ/iM3HCiNM0r00zK9UMPswZyeB0MYDebwoabbBrM/h7JbaYkBcLG14tAHAAA=
+   H4sIAAAAAAAAC2NmYGBgHsUUYZZB4Iah6LaBDAdKw4US/bSME2qYPdzTzEDG/WD321Dx51B2Ky0xAIqlc/7QBwAA
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAVDETARwKNgZABqxDUhM0btQOinhx3UUENL/aNg8AIA8xtEKtAHAAA=
   </data>
  </layer>
 </map>
