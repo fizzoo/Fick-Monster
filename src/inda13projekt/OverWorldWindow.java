@@ -7,7 +7,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
 
 /**
  * Manages input, logic and drawing whilst in the overworld.
@@ -16,7 +15,7 @@ import org.newdawn.slick.tiled.TiledMap;
  * 
  */
 public class OverWorldWindow implements Window {
-	private TiledMap map;
+	private Map map;
 	private ArrayList<GameObject> objects;
 	private Input input;
 	private Player player;
@@ -25,24 +24,15 @@ public class OverWorldWindow implements Window {
 	 * @param input
 	 */
 	public OverWorldWindow(Input input) {
+		map = new Map("untitled");
+
 		player = new Player();
-		player.init(2, 5);
+		player.init(2, 5, map);
 
 		objects = new ArrayList<>();
 		objects.add(player);
 
-		chooseMap("untitled");
 		this.input = input;
-	}
-
-	private void chooseMap(String ref) {
-		try {
-			map = new TiledMap("././res/" + ref + ".tmx");
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	/**

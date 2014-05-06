@@ -12,14 +12,16 @@ public class Player extends GameObject {
 	private int gridX;
 	private int gridY;
 	private boolean isMoving;
+	private Map currentMap;
 
 	/**
 	 * Inits the player to specified coordinate.
 	 */
-	public void init(int gridX, int gridY) {
+	public void init(int gridX, int gridY, Map currentMap) {
 		this.gridX = gridX;
 		this.gridY = gridY;
 		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32, null);
+		this.currentMap = currentMap;
 	}
 
 	/**
@@ -27,6 +29,9 @@ public class Player extends GameObject {
 	 */
 	public void moveUp() {
 		if (!isMoving) {
+			if (currentMap.isBlocked(gridX, gridY - 1))
+				return;
+
 			isMoving = true;
 			gridY--;
 		}
@@ -37,6 +42,9 @@ public class Player extends GameObject {
 	 */
 	public void moveDown() {
 		if (!isMoving) {
+			if (currentMap.isBlocked(gridX, gridY + 1))
+				return;
+
 			isMoving = true;
 			gridY++;
 		}
@@ -47,6 +55,9 @@ public class Player extends GameObject {
 	 */
 	public void moveLeft() {
 		if (!isMoving) {
+			if (currentMap.isBlocked(gridX - 1, gridY))
+				return;
+
 			isMoving = true;
 			gridX--;
 		}
@@ -57,6 +68,9 @@ public class Player extends GameObject {
 	 */
 	public void moveRight() {
 		if (!isMoving) {
+			if (currentMap.isBlocked(gridX + 1, gridY))
+				return;
+
 			isMoving = true;
 			gridX++;
 		}
