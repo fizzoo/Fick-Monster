@@ -1,6 +1,8 @@
 package inda13projekt;
 
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  * A class used to represent the player. Handles the players movements.
@@ -13,6 +15,8 @@ public class Player extends GameObject {
 	private int gridY;
 	private boolean isMoving;
 	private Map currentMap;
+	private SpriteSheet spriteSheet;
+	private int direction; // W=0;S=1;A=2;D=3;
 
 	/**
 	 * Inits the player to specified coordinate.
@@ -20,7 +24,16 @@ public class Player extends GameObject {
 	public void init(int gridX, int gridY, Map currentMap) {
 		this.gridX = gridX;
 		this.gridY = gridY;
-		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32, null);
+
+		try {
+			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32,
+				spriteSheet.getSprite(0, 0));
 		this.currentMap = currentMap;
 	}
 
@@ -29,6 +42,9 @@ public class Player extends GameObject {
 	 */
 	public void moveUp() {
 		if (!isMoving) {
+			direction = 0;
+			sprite = spriteSheet.getSprite(direction, 0);
+
 			if (currentMap.isBlocked(gridX, gridY - 1))
 				return;
 
@@ -42,6 +58,9 @@ public class Player extends GameObject {
 	 */
 	public void moveDown() {
 		if (!isMoving) {
+			direction = 1;
+			sprite = spriteSheet.getSprite(direction, 0);
+
 			if (currentMap.isBlocked(gridX, gridY + 1))
 				return;
 
@@ -55,6 +74,9 @@ public class Player extends GameObject {
 	 */
 	public void moveLeft() {
 		if (!isMoving) {
+			direction = 2;
+			sprite = spriteSheet.getSprite(direction, 0);
+
 			if (currentMap.isBlocked(gridX - 1, gridY))
 				return;
 
@@ -68,6 +90,9 @@ public class Player extends GameObject {
 	 */
 	public void moveRight() {
 		if (!isMoving) {
+			direction = 3;
+			sprite = spriteSheet.getSprite(direction, 0);
+
 			if (currentMap.isBlocked(gridX + 1, gridY))
 				return;
 
@@ -101,6 +126,6 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void render(Graphics g) {
-		super.render(g);
+		g.drawImage(sprite, x - width / 2, y - height / 2);
 	}
 }
