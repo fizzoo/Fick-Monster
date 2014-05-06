@@ -1,6 +1,5 @@
 package inda13projekt;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.newdawn.slick.GameContainer;
@@ -15,8 +14,6 @@ import org.newdawn.slick.SlickException;
  * 
  */
 public class OverWorldWindow implements Window {
-	private Map map;
-	private ArrayList<GameObject> objects;
 	private Input input;
 	private Player player;
 	private Window nextWindow;
@@ -27,14 +24,8 @@ public class OverWorldWindow implements Window {
 	 * @param input
 	 *            User input
 	 */
-	public OverWorldWindow(Input input) {
-		map = new Map("untitled");
-
-		player = new Player();
-		player.init(2, 5, map);
-
-		objects = new ArrayList<>();
-		objects.add(player);
+	public OverWorldWindow(Input input, Player player) {
+		this.player = player;
 
 		this.input = input;
 		nextWindow = null;
@@ -54,13 +45,14 @@ public class OverWorldWindow implements Window {
 		if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 			player.moveRight();
 		if (input.isKeyDown(Input.KEY_ESCAPE))
-			nextWindow = new MenuWindow(input);
+			nextWindow = new MenuWindow(input, player);
 
-		Iterator<GameObject> it = objects.iterator();
+		Iterator<GameObject> it = player.getMap().getObjects().iterator();
 
 		while (it.hasNext()) {
 			it.next().update();
 		}
+		player.update();
 	}
 
 	/**
@@ -68,13 +60,14 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		map.render(0, 0);
+		player.getMap().render(0, 0);
 
-		Iterator<GameObject> it = objects.iterator();
+		Iterator<GameObject> it = player.getMap().getObjects().iterator();
 
 		while (it.hasNext()) {
 			it.next().render(g);
 		}
+		player.render(g);
 	}
 
 	/**

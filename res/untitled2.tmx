@@ -2,20 +2,25 @@
 <map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
   <image source="test.png" width="64" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="nextMap" value="untitled"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NmYGBgHsUUYZZB4Iah6LaBDAdKw4US/bSME2qYPdzTzEDG/WD321Dx51B2Ky0xAIqlc/7QBwAA
+   H4sIAAAAAAAAC2NmYGBgHsWjeBSP4lE8ikfxkMYAOaW0JNAHAAA=
   </data>
  </layer>
  <layer name="Collidable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAVDETARwKNgZABqxDUhM0btQOinhx3UUENL/aNg8AIA8xtEKtAHAAA=
+   H4sIAAAAAAAAC2NgGAWjAAJYKMD0cBspaslx/3DwB73iYxSMglEw+AAAgQwJGdAHAAA=
   </data>
  </layer>
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
+   H4sIAAAAAAAAC2NgGAWjYBSMglFALGCEYlqbT2t7RsHwAwDBrG5E0AcAAA==
   </data>
  </layer>
 </map>

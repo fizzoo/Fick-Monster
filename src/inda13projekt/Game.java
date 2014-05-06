@@ -59,7 +59,8 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		input = gc.getInput();
-		currentWindow = new MenuWindow(input);
+		currentWindow = new MenuWindow(input, new Player(2, 5, new Map(
+				"untitled2")));
 
 		gc.setShowFPS(false);
 	}
@@ -75,9 +76,9 @@ public class Game extends BasicGame {
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		currentWindow.update(gc, delta);
-		if(currentWindow.getNextWindow() != null) {
+		if (currentWindow.getNextWindow() != null) {
 			currentWindow = currentWindow.getNextWindow();
-			if(currentWindow instanceof ExitWindow) {
+			if (currentWindow instanceof ExitWindow) {
 				app.exit();
 			}
 		}
