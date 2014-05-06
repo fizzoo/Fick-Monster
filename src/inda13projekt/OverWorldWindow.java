@@ -19,6 +19,7 @@ public class OverWorldWindow implements Window {
 	private ArrayList<GameObject> objects;
 	private Input input;
 	private Player player;
+	private Window nextWindow;
 
 	/**
 	 * Creates a new map and places the player on it.
@@ -36,6 +37,7 @@ public class OverWorldWindow implements Window {
 		objects.add(player);
 
 		this.input = input;
+		nextWindow = null;
 	}
 
 	/**
@@ -51,6 +53,8 @@ public class OverWorldWindow implements Window {
 			player.moveLeft();
 		if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 			player.moveRight();
+		if (input.isKeyDown(Input.KEY_ESCAPE))
+			nextWindow = new MenuWindow(input);
 
 		Iterator<GameObject> it = objects.iterator();
 
@@ -79,7 +83,6 @@ public class OverWorldWindow implements Window {
 	@Override
 	public Window getNextWindow() {
 		// TODO Auto-generated method stub
-		return null;
+		return nextWindow;
 	}
-
 }
