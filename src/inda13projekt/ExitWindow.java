@@ -24,7 +24,7 @@ public class ExitWindow implements Window {
 	 * 
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g, Camera camera)
+	public void render(GameContainer gc, Graphics g)
 			throws SlickException {
 		// TODO Auto-generated method stub
 
