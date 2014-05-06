@@ -11,9 +11,9 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class Map {
 	private TiledMap map;
-	private boolean[][] blocked;
 	private int width;
 	private int height;
+	private int blockLayer;
 
 	/**
 	 * Creates a new map, initializes collision.
@@ -32,15 +32,7 @@ public class Map {
 		width = map.getWidth();
 		height = map.getHeight();
 
-		int blockLayer = map.getLayerIndex("Collidable");
-		blocked = new boolean[width][height];
-		for (int i = 0; i < map.getWidth(); i++) {
-			for (int j = 0; j < map.getHeight(); j++) {
-				if (map.getTileId(i, j, blockLayer) != 0) {
-					blocked[i][j] = true;
-				}
-			}
-		}
+		blockLayer = map.getLayerIndex("Collidable");
 	}
 
 	/**
@@ -60,7 +52,7 @@ public class Map {
 		if (y >= height)
 			return true;
 
-		return blocked[x][y];
+		return (map.getTileId(x, y, blockLayer) != 0);
 	}
 
 	/**

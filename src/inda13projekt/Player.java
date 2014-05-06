@@ -24,6 +24,7 @@ public class Player extends GameObject {
 	public void init(int gridX, int gridY, Map currentMap) {
 		this.gridX = gridX;
 		this.gridY = gridY;
+		direction = 0;
 
 		try {
 			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
@@ -33,7 +34,7 @@ public class Player extends GameObject {
 		}
 
 		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32,
-				spriteSheet.getSprite(0, 0));
+				spriteSheet.getSprite(direction, 0));
 		this.currentMap = currentMap;
 	}
 
