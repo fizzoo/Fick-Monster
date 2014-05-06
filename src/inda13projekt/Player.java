@@ -18,12 +18,17 @@ public class Player extends GameObject {
 	private SpriteSheet spriteSheet;
 	private int direction; // W=0;S=1;A=2;D=3;
 
+	public Player(int gridX, int gridY, Map currentMap) {
+		this.gridX = gridX;
+		this.gridY = gridY;
+		this.currentMap = currentMap;
+		init();
+	}
+
 	/**
 	 * Inits the player to specified coordinate.
 	 */
-	public void init(int gridX, int gridY, Map currentMap) {
-		this.gridX = gridX;
-		this.gridY = gridY;
+	public void init() {
 		direction = 0;
 
 		try {
@@ -35,7 +40,6 @@ public class Player extends GameObject {
 
 		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32,
 				spriteSheet.getSprite(direction, 0));
-		this.currentMap = currentMap;
 	}
 
 	/**
@@ -103,6 +107,30 @@ public class Player extends GameObject {
 	}
 
 	/**
+	 * @return map the player is in
+	 */
+	public Map getMap() {
+		return currentMap;
+	}
+
+	/**
+	 * @param x
+	 *            coordinate to start on, next map
+	 * @param y
+	 *            coordinate to start on, next map
+	 * @param ref
+	 *            map name
+	 */
+	public void changeMap(int newGridX, int newGridY, String ref) {
+		currentMap = new Map(ref);
+		gridX = newGridX;
+		gridY = newGridY;
+		x = gridX * 32 + 16;
+		y = gridY * 32 + 16;
+		isMoving = false;
+	}
+
+	/**
 	 * Updates the player location
 	 */
 	@Override
@@ -120,6 +148,10 @@ public class Player extends GameObject {
 			isMoving = false;
 		}
 		// super.update();// Uses dX/dY
+
+		String nextMap = currentMap.getTeleported(gridX, gridY);
+		if (nextMap != null)
+			changeMap(2, 0, nextMap);
 	}
 
 	/**

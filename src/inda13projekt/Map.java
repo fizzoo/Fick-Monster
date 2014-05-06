@@ -1,5 +1,7 @@
 package inda13projekt;
 
+import java.util.ArrayList;
+
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
@@ -14,6 +16,7 @@ public class Map {
 	private int width;
 	private int height;
 	private int blockLayer;
+	private ArrayList<GameObject> objects;
 
 	/**
 	 * Creates a new map, initializes collision.
@@ -22,6 +25,8 @@ public class Map {
 	 *            Name of the mapfile
 	 */
 	public Map(String ref) {
+		objects = new ArrayList<>();
+
 		try {
 			map = new TiledMap("././res/" + ref + ".tmx");
 		} catch (SlickException e) {
@@ -53,6 +58,19 @@ public class Map {
 			return true;
 
 		return (map.getTileId(x, y, blockLayer) != 0);
+	}
+
+	/**
+	 * @return
+	 */
+	public ArrayList<GameObject> getObjects() {
+		return objects;
+	}
+
+	public String getTeleported(int x, int y) {
+		int teleportLayer = map.getLayerIndex("Teleportable");
+		int tileID = map.getTileId(x, y, teleportLayer);
+		return map.getTileProperty(tileID, "nextMap", null);
 	}
 
 	/**
