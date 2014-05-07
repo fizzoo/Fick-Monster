@@ -17,6 +17,15 @@ public class Player extends GameObject {
 	private Map currentMap;
 	private SpriteSheet spriteSheet;
 	private int direction; // W=0;S=1;A=2;D=3;
+	private Camera camera;
+
+	public Player(int gridX, int gridY, Map currentMap) {
+		this.gridX = gridX;
+		this.gridY = gridY;
+		this.currentMap = currentMap;
+		camera = currentMap.getCamera();
+		init();
+	}
 
 	public Player(int gridX, int gridY, Map currentMap) {
 		this.gridX = gridX;
@@ -123,6 +132,10 @@ public class Player extends GameObject {
 	 */
 	public void changeMap(int newGridX, int newGridY, String ref) {
 		currentMap = new Map(ref);
+<<<<<<< HEAD
+=======
+		camera = currentMap.getCamera();
+>>>>>>> origin/Victor
 		gridX = newGridX;
 		gridY = newGridY;
 		x = gridX * 32 + 16;
@@ -152,6 +165,11 @@ public class Player extends GameObject {
 		String nextMap = currentMap.getTeleported(gridX, gridY);
 		if (nextMap != null)
 			changeMap(2, 0, nextMap);
+<<<<<<< HEAD
+=======
+
+		camera.setLocation((int) x, (int) y);
+>>>>>>> origin/Victor
 	}
 
 	/**
@@ -159,6 +177,7 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(sprite, x - width / 2, y - height / 2);
+		g.drawImage(sprite, x - width / 2 + camera.getXOffset(), y - height / 2
+				+ camera.getYoffset());
 	}
 }
