@@ -16,8 +16,8 @@ import org.newdawn.slick.SpriteSheet;
 public abstract class GameObject {
 	protected float x;
 	protected float y;
-	protected final float width = 32;
-	protected final float height = 32;
+	protected float width = 32;
+	protected float height = 32;
 
 	protected SpriteSheet spriteSheet;
 	protected Image sprite;
@@ -29,9 +29,12 @@ public abstract class GameObject {
 
 	protected int gridX;
 	protected int gridY;
-	protected float velX;
-	protected float velY;
-	protected Map currentMap;
+	protected int speed;
+	protected Map map;
+
+	protected String name;
+	protected int maxhp;
+	protected int hp;
 
 	/**
 	 * 
@@ -43,14 +46,15 @@ public abstract class GameObject {
 	 * @param velY
 	 *            the velocity of the object when moving on the y-axis (in
 	 *            pixels)
-	 * @param currentMap
+	 * @param map
 	 */
-	public GameObject(int gridX, int gridY, int velX, int velY,
-			int spriteOffset, Map currentMap) {
+	public GameObject(int gridX, int gridY, String name, int maxhp, int speed,
+			int spriteOffset, Map map) {
 		this.gridX = gridX;
 		this.gridY = gridY;
-		this.currentMap = currentMap;
-		camera = currentMap.getCamera();
+		this.map = map;
+		this.map.setObjectPlace(gridX, gridY, gridX, gridY, this);
+		camera = this.map.getCamera();
 
 		try {
 			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
@@ -59,78 +63,90 @@ public abstract class GameObject {
 			e.printStackTrace();
 		}
 		direction = 0;
-		sprite = spriteSheet.getSprite(direction + spriteOffset, 0);
+		sprite = spriteSheet.getSprite(direction, spriteOffset);
 
 		x = 32 * gridX;
 		y = 32 * gridY;
-		this.velX = velX;
-		this.velY = velY;
 
 		this.spriteOffset = spriteOffset;
+
+		this.name = name;
+		this.maxhp = maxhp;
+		hp = this.maxhp;
+		this.speed = speed;
+
+	}
+
+	public int getDirToX(int dir) {
+		switch (dir) {
+		case 2:
+			return -1;
+		case 3:
+			return +1;
+		default:
+			return 0;
+		}
+	}
+
+	public int getDirToY(int dir) {
+		switch (dir) {
+		case 0:
+			return -1;
+		case 1:
+			return +1;
+		default:
+			return 0;
+		}
+	}
+
+	public void move(int dir) {
+		if (!isMoving) {
+			setDir(dir);
+
+			int x = getDirToX(dir);
+			int y = getDirToY(dir);
+
+			if (map.isBlocked(gridX + x, gridY + y))
+				return;
+			map.setObjectPlace(gridX, gridY, gridX + x, gridY + y, this);
+
+			isMoving = true;
+			gridX += x;
+			gridY += y;
+		}
 	}
 
 	/**
 	 * Tries to move player up one grid, if possible.
 	 */
 	public void moveUp() {
-		if (!isMoving) {
-			direction = 0;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX, gridY - 1))
-				return;
-
-			isMoving = true;
-			gridY--;
-		}
+		move(0);
 	}
 
 	/**
 	 * Tries to move player down one grid, if possible.
 	 */
 	public void moveDown() {
-		if (!isMoving) {
-			direction = 1;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX, gridY + 1))
-				return;
-
-			isMoving = true;
-			gridY++;
-		}
+		move(1);
 	}
 
 	/**
 	 * Tries to move player left one grid, if possible.
 	 */
 	public void moveLeft() {
-		if (!isMoving) {
-			direction = 2;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX - 1, gridY))
-				return;
-
-			isMoving = true;
-			gridX--;
-		}
+		move(2);
 	}
 
 	/**
 	 * Tries to move player right one grid, if possible.
 	 */
 	public void moveRight() {
-		if (!isMoving) {
-			direction = 3;
-			sprite = spriteSheet.getSprite(direction, 0);
+		move(3);
+	}
 
-			if (currentMap.isBlocked(gridX + 1, gridY))
-				return;
-
-			isMoving = true;
-			gridX++;
-		}
+	public void setDir(int direction) {
+		this.direction = direction;
+		sprite = spriteSheet.getSprite(direction, spriteOffset);
 	}
 
 	/**
@@ -138,14 +154,14 @@ public abstract class GameObject {
 	 */
 	public void update() {
 		if (y < (gridY * 32)) {
-			y += velY;
+			y += speed;
 		} else if (y > (gridY * 32)) {
-			y -= velY;
+			y -= speed;
 		} else if (x < (gridX * 32)) { // else since you can't walk
 										// diagonally anyway
-			x += velX;
+			x += speed;
 		} else if (x > (gridX * 32)) {
-			x -= velX;
+			x -= speed;
 		} else { // finished walking
 			isMoving = false;
 		}

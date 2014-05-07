@@ -7,17 +7,18 @@ package inda13projekt;
  * 
  */
 public class Player extends GameObject {
-
-	public Player(int gridX, int gridY, int velX, int velY, int spriteOffset,
-			Map currentMap) {
-		super(gridX, gridY, velX, velY, spriteOffset, currentMap);
+	public Player(int gridX, int gridY, String name, int maxhp, int speed,
+			int spriteOffset, Map map) {
+		super(gridX, gridY, name, maxhp, speed, spriteOffset, map);
 	}
+
+	private Enemy opponent;
 
 	/**
 	 * @return map the player is in
 	 */
 	public Map getMap() {
-		return currentMap;
+		return map;
 	}
 
 	/**
@@ -29,14 +30,24 @@ public class Player extends GameObject {
 	 *            map name
 	 */
 	public void changeMap(int newGridX, int newGridY, String ref) {
-		currentMap = new Map(ref);
+		map = new Map(ref);
 
-		camera = currentMap.getCamera();
+		camera = map.getCamera();
 		gridX = newGridX;
 		gridY = newGridY;
 		x = gridX * 32;
 		y = gridY * 32;
 		isMoving = false;
+	}
+
+	public void talk() {
+		int xOffset = getDirToX(direction);
+		int yOffset = getDirToY(direction);
+
+		GameObject tempOpponent = map.getObjectPlace(gridX + xOffset, gridY
+				+ yOffset);
+		if (tempOpponent instanceof Enemy)
+			opponent = (Enemy) tempOpponent;
 	}
 
 	/**
@@ -46,13 +57,21 @@ public class Player extends GameObject {
 	public void update() {
 		super.update();
 
-		String[] nextMap = currentMap.getTeleported(gridX, gridY);
+		String[] nextMap = map.getTeleported(gridX, gridY);
 		if (nextMap != null) {
 			changeMap(Integer.parseInt(nextMap[1]),
 					Integer.parseInt(nextMap[2]), nextMap[0]);
 		}
 
 		camera.setLocation((int) x, (int) y);
+	}
+
+	public Enemy getOpponent() {
+		return opponent;
+	}
+
+	public void setOpponent(Enemy opponent) {
+		this.opponent = opponent;
 	}
 
 }

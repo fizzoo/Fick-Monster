@@ -5,6 +5,16 @@
   <tile id="0">
    <properties>
     <property name="nextMap" value="untitled"/>
+    <property name="xCoord" value="2"/>
+    <property name="yCoord" value="2"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="maxhp" value="8"/>
+    <property name="name" value="d"/>
+    <property name="speed" value="4"/>
+    <property name="spriteOffset" value="1"/>
    </properties>
   </tile>
  </tileset>
@@ -21,6 +31,11 @@
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgGAWjYBSMglFALGCEYlqbT2t7RsHwAwDBrG5E0AcAAA==
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC8WRUQ7AIAhDm93/0Ps1BJSWupkYP4RHWwDuPOSd9lc85wygZt/0oujLtKiML3T+PWNSp/pg+jI/aDIYb13mdDeKd2eebH/8y2qxvI4MHYxT7uoMh0dXThWzYncy2GmLx6n/xt4zTy/C9vaw0AcAAA==
   </data>
  </layer>
 </map>

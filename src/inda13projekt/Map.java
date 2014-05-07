@@ -17,6 +17,7 @@ public class Map {
 	private int height;
 	private int blockLayer;
 	private ArrayList<GameObject> objects;
+	private GameObject[][] objectGrid;
 
 	private Camera camera;
 
@@ -42,6 +43,25 @@ public class Map {
 		camera = new Camera(width, height);
 
 		blockLayer = map.getLayerIndex("Collidable");
+
+		objectGrid = new GameObject[width][height];
+
+		int enemyLayer = map.getLayerIndex("Enemies");
+		for (int x = 0; x < width; x++) {
+			for (int y = 0; y < height; y++) {
+				int tileID = map.getTileId(x, y, enemyLayer);
+				if (tileID != 0) {
+					objects.add(new Enemy(x, y, map.getTileProperty(tileID,
+							"name", null), Integer.parseInt(map
+							.getTileProperty(tileID, "maxhp", null)), Integer
+							.parseInt(map
+									.getTileProperty(tileID, "speed", null)),
+							Integer.parseInt(map.getTileProperty(tileID,
+									"spriteOffset", null)), this));
+
+				}
+			}
+		}
 	}
 
 	/**
@@ -61,7 +81,28 @@ public class Map {
 		if (y >= height)
 			return true;
 
+		if (objectGrid[x][y] != null)
+			return true;
+
 		return (map.getTileId(x, y, blockLayer) != 0);
+	}
+
+	public void setObjectPlace(int oldX, int oldY, int x, int y,
+			GameObject object) {
+		objectGrid[oldX][oldY] = null;
+		objectGrid[x][y] = object;
+	}
+
+	public GameObject getObjectPlace(int x, int y) {
+		if (x < 0)
+			return null;
+		if (x >= width)
+			return null;
+		if (y < 0)
+			return null;
+		if (y >= height)
+			return null;
+		return objectGrid[x][y];
 	}
 
 	/**
@@ -72,9 +113,7 @@ public class Map {
 	}
 
 	/**
-	 * TODO: USE
-	 * 
-	 * @return
+	 * @return array of objects on map
 	 */
 	public ArrayList<GameObject> getObjects() {
 		return objects;
