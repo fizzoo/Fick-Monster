@@ -37,6 +37,9 @@ public class Camera {
 	 *            object location to follow, in pixels
 	 */
 	public void setLocation(int x, int y) {
+		x += 16;
+		y += 16;
+
 		if (x < middleX) {
 			xOffset = 0;
 		} else if (x > xSize - middleX) {

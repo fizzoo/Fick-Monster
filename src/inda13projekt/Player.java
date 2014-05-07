@@ -40,7 +40,7 @@ public class Player extends GameObject {
 			e.printStackTrace();
 		}
 
-		super.init(32 * gridX + 16, 32 * gridY + 16, 2, 2, 32, 32,
+		super.init(32 * gridX, 32 * gridY, 2, 2, 32, 32,
 				spriteSheet.getSprite(direction, 0));
 	}
 
@@ -139,14 +139,14 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void update() {
-		if (y < (gridY * 32 + height / 2)) {
+		if (y < (gridY * 32)) {
 			y += velY;
-		} else if (y > (gridY * 32 + height / 2)) {
+		} else if (y > (gridY * 32)) {
 			y -= velY;
-		} else if (x < (gridX * 32 + width / 2)) { // else since you can't walk
-													// diagonally anyway
+		} else if (x < (gridX * 32)) { // else since you can't walk
+										// diagonally anyway
 			x += velX;
-		} else if (x > (gridX * 32 + width / 2)) {
+		} else if (x > (gridX * 32)) {
 			x -= velX;
 		} else { // finished walking
 			isMoving = false;
@@ -165,7 +165,6 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(sprite, x - width / 2 + camera.getXOffset(), y - height / 2
-				+ camera.getYoffset());
+		g.drawImage(sprite, x + camera.getXOffset(), y + camera.getYoffset());
 	}
 }
