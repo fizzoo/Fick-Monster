@@ -60,11 +60,7 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-<<<<<<< HEAD
-		player.getMap().render(0, 0);
-=======
 		player.getMap().render();
->>>>>>> origin/Victor
 
 		Iterator<GameObject> it = player.getMap().getObjects().iterator();
 

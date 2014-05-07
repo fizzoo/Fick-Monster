@@ -27,13 +27,6 @@ public class Player extends GameObject {
 		init();
 	}
 
-	public Player(int gridX, int gridY, Map currentMap) {
-		this.gridX = gridX;
-		this.gridY = gridY;
-		this.currentMap = currentMap;
-		init();
-	}
-
 	/**
 	 * Inits the player to specified coordinate.
 	 */
@@ -132,10 +125,8 @@ public class Player extends GameObject {
 	 */
 	public void changeMap(int newGridX, int newGridY, String ref) {
 		currentMap = new Map(ref);
-<<<<<<< HEAD
-=======
+
 		camera = currentMap.getCamera();
->>>>>>> origin/Victor
 		gridX = newGridX;
 		gridY = newGridY;
 		x = gridX * 32 + 16;
@@ -165,11 +156,8 @@ public class Player extends GameObject {
 		String nextMap = currentMap.getTeleported(gridX, gridY);
 		if (nextMap != null)
 			changeMap(2, 0, nextMap);
-<<<<<<< HEAD
-=======
 
 		camera.setLocation((int) x, (int) y);
->>>>>>> origin/Victor
 	}
 
 	/**

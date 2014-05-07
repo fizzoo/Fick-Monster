@@ -17,10 +17,8 @@ public class Map {
 	private int height;
 	private int blockLayer;
 	private ArrayList<GameObject> objects;
-<<<<<<< HEAD
-=======
+
 	private Camera camera;
->>>>>>> origin/Victor
 
 	/**
 	 * Creates a new map, initializes collision.
@@ -67,8 +65,8 @@ public class Map {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
+	 * <<<<<<< HEAD =======
+	 * 
 	 * @return camera in use
 	 */
 	public Camera getCamera() {
@@ -78,15 +76,14 @@ public class Map {
 	/**
 	 * TODO: USE
 	 * 
->>>>>>> origin/Victor
+	 * >>>>>>> origin/Victor
+	 * 
 	 * @return
 	 */
 	public ArrayList<GameObject> getObjects() {
 		return objects;
 	}
 
-<<<<<<< HEAD
-=======
 	/**
 	 * @param x
 	 *            x location of player, in tiles
@@ -94,7 +91,6 @@ public class Map {
 	 *            y location of player, in tiles
 	 * @return string with name of next map if tile should teleport player.
 	 */
->>>>>>> origin/Victor
 	public String getTeleported(int x, int y) {
 		int teleportLayer = map.getLayerIndex("Teleportable");
 		int tileID = map.getTileId(x, y, teleportLayer);
