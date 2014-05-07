@@ -17,6 +17,7 @@ public class Map {
 	private int height;
 	private int blockLayer;
 	private ArrayList<GameObject> objects;
+	private Camera camera;
 
 	/**
 	 * Creates a new map, initializes collision.
@@ -36,6 +37,8 @@ public class Map {
 
 		width = map.getWidth();
 		height = map.getHeight();
+
+		camera = new Camera(width, height);
 
 		blockLayer = map.getLayerIndex("Collidable");
 	}
@@ -61,12 +64,28 @@ public class Map {
 	}
 
 	/**
+	 * @return camera in use
+	 */
+	public Camera getCamera() {
+		return camera;
+	}
+
+	/**
+	 * TODO: USE
+	 * 
 	 * @return
 	 */
 	public ArrayList<GameObject> getObjects() {
 		return objects;
 	}
 
+	/**
+	 * @param x
+	 *            x location of player, in tiles
+	 * @param y
+	 *            y location of player, in tiles
+	 * @return string with name of next map if tile should teleport player.
+	 */
 	public String getTeleported(int x, int y) {
 		int teleportLayer = map.getLayerIndex("Teleportable");
 		int tileID = map.getTileId(x, y, teleportLayer);
@@ -79,7 +98,7 @@ public class Map {
 	 * @param y
 	 *            y location to start rendering, in pixels
 	 */
-	public void render(int x, int y) {
-		map.render(x, y);
+	public void render() {
+		map.render(camera.getXOffset(), camera.getYoffset());
 	}
 }
