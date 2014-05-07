@@ -65,8 +65,6 @@ public class Map {
 	}
 
 	/**
-	 * <<<<<<< HEAD =======
-	 * 
 	 * @return camera in use
 	 */
 	public Camera getCamera() {
@@ -75,8 +73,6 @@ public class Map {
 
 	/**
 	 * TODO: USE
-	 * 
-	 * >>>>>>> origin/Victor
 	 * 
 	 * @return
 	 */
@@ -91,10 +87,17 @@ public class Map {
 	 *            y location of player, in tiles
 	 * @return string with name of next map if tile should teleport player.
 	 */
-	public String getTeleported(int x, int y) {
+	public String[] getTeleported(int x, int y) {
 		int teleportLayer = map.getLayerIndex("Teleportable");
 		int tileID = map.getTileId(x, y, teleportLayer);
-		return map.getTileProperty(tileID, "nextMap", null);
+		if (tileID == 0)
+			return null;
+
+		String[] res = new String[3];
+		res[0] = map.getTileProperty(tileID, "nextMap", null);
+		res[1] = map.getTileProperty(tileID, "xCoord", null);
+		res[2] = map.getTileProperty(tileID, "yCoord", null);
+		return res;
 	}
 
 	/**

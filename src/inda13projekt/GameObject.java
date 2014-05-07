@@ -2,6 +2,7 @@ package inda13projekt;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  * This class is the basis for every object that needs to be called in the
@@ -21,6 +22,14 @@ public abstract class GameObject {
 	protected int dX;
 	protected int dY;
 	protected Image sprite;
+
+	protected int gridX;
+	protected int gridY;
+	protected boolean isMoving;
+	protected Map currentMap;
+	protected SpriteSheet spriteSheet;
+	protected int direction; // W=0;S=1;A=2;D=3;
+	protected Camera camera;
 
 	/**
 	 * Inits the most basic variables of gameobject

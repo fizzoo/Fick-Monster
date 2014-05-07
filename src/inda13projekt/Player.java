@@ -11,14 +11,6 @@ import org.newdawn.slick.SpriteSheet;
  * 
  */
 public class Player extends GameObject {
-	private int gridX;
-	private int gridY;
-	private boolean isMoving;
-	private Map currentMap;
-	private SpriteSheet spriteSheet;
-	private int direction; // W=0;S=1;A=2;D=3;
-	private Camera camera;
-
 	public Player(int gridX, int gridY, Map currentMap) {
 		this.gridX = gridX;
 		this.gridY = gridY;
@@ -129,8 +121,8 @@ public class Player extends GameObject {
 		camera = currentMap.getCamera();
 		gridX = newGridX;
 		gridY = newGridY;
-		x = gridX * 32 + 16;
-		y = gridY * 32 + 16;
+		x = gridX * 32;
+		y = gridY * 32;
 		isMoving = false;
 	}
 
@@ -153,9 +145,11 @@ public class Player extends GameObject {
 		}
 		// super.update();// Uses dX/dY
 
-		String nextMap = currentMap.getTeleported(gridX, gridY);
-		if (nextMap != null)
-			changeMap(2, 0, nextMap);
+		String[] nextMap = currentMap.getTeleported(gridX, gridY);
+		if (nextMap != null) {
+			changeMap(Integer.parseInt(nextMap[1]),
+					Integer.parseInt(nextMap[2]), nextMap[0]);
+		}
 
 		camera.setLocation((int) x, (int) y);
 	}
