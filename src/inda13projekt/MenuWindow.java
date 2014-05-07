@@ -36,8 +36,8 @@ public class MenuWindow implements Window {
 
 		background = new Image("././res/bgi_test.bmp");
 		buttons = new ArrayList<Button>();
-		buttons.add(new Button(320, 128, "Start Game", 0));
-		buttons.add(new Button(320, 320, "Exit  Game", 1));
+		buttons.add(new Button(320, 128, 256, 128, "Start Game", 0));
+		buttons.add(new Button(320, 320, 256, 128, "Exit  Game", 1));
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
 		this.input = input;
@@ -50,7 +50,6 @@ public class MenuWindow implements Window {
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		for (Button button : buttons) {
-			button.update();
 			if (button.getID() == currentButton) {
 				button.setImage(true);
 			} else {
@@ -103,8 +102,8 @@ public class MenuWindow implements Window {
 	}
 
 	/**
-	 * 
-	 */
+  * 
+  */
 	@Override
 	public Window getNextWindow() {
 		// TODO Auto-generated method stub

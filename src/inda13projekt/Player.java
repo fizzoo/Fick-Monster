@@ -1,9 +1,5 @@
 package inda13projekt;
 
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.SpriteSheet;
-
 /**
  * A class used to represent the player. Handles the players movements.
  * 
@@ -11,93 +7,10 @@ import org.newdawn.slick.SpriteSheet;
  * 
  */
 public class Player extends GameObject {
-	public Player(int gridX, int gridY, Map currentMap) {
-		this.gridX = gridX;
-		this.gridY = gridY;
-		this.currentMap = currentMap;
-		camera = currentMap.getCamera();
-		init();
-	}
 
-	/**
-	 * Inits the player to specified coordinate.
-	 */
-	public void init() {
-		direction = 0;
-
-		try {
-			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		super.init(32 * gridX, 32 * gridY, 2, 2, 32, 32,
-				spriteSheet.getSprite(direction, 0));
-	}
-
-	/**
-	 * Tries to move player up one grid, if possible.
-	 */
-	public void moveUp() {
-		if (!isMoving) {
-			direction = 0;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX, gridY - 1))
-				return;
-
-			isMoving = true;
-			gridY--;
-		}
-	}
-
-	/**
-	 * Tries to move player down one grid, if possible.
-	 */
-	public void moveDown() {
-		if (!isMoving) {
-			direction = 1;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX, gridY + 1))
-				return;
-
-			isMoving = true;
-			gridY++;
-		}
-	}
-
-	/**
-	 * Tries to move player left one grid, if possible.
-	 */
-	public void moveLeft() {
-		if (!isMoving) {
-			direction = 2;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX - 1, gridY))
-				return;
-
-			isMoving = true;
-			gridX--;
-		}
-	}
-
-	/**
-	 * Tries to move player right one grid, if possible.
-	 */
-	public void moveRight() {
-		if (!isMoving) {
-			direction = 3;
-			sprite = spriteSheet.getSprite(direction, 0);
-
-			if (currentMap.isBlocked(gridX + 1, gridY))
-				return;
-
-			isMoving = true;
-			gridX++;
-		}
+	public Player(int gridX, int gridY, int velX, int velY, int spriteOffset,
+			Map currentMap) {
+		super(gridX, gridY, velX, velY, spriteOffset, currentMap);
 	}
 
 	/**
@@ -131,19 +44,7 @@ public class Player extends GameObject {
 	 */
 	@Override
 	public void update() {
-		if (y < (gridY * 32)) {
-			y += velY;
-		} else if (y > (gridY * 32)) {
-			y -= velY;
-		} else if (x < (gridX * 32)) { // else since you can't walk
-										// diagonally anyway
-			x += velX;
-		} else if (x > (gridX * 32)) {
-			x -= velX;
-		} else { // finished walking
-			isMoving = false;
-		}
-		// super.update();// Uses dX/dY
+		super.update();
 
 		String[] nextMap = currentMap.getTeleported(gridX, gridY);
 		if (nextMap != null) {
@@ -154,11 +55,4 @@ public class Player extends GameObject {
 		camera.setLocation((int) x, (int) y);
 	}
 
-	/**
-	 * Renders the player
-	 */
-	@Override
-	public void render(Graphics g) {
-		g.drawImage(sprite, x + camera.getXOffset(), y + camera.getYoffset());
-	}
 }
