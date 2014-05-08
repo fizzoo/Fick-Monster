@@ -29,6 +29,10 @@ public class BattleWindow implements Window {
 	private int playerOldDir, opponentOldDir;
 	private final TrueTypeFont ttf32 = new TrueTypeFont(new Font("Verdana",
 			Font.PLAIN, 32), true);
+	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 20), true);
+	private String textTop;
+	private String textBottom;
 
 	public BattleWindow(Input input, Player player, Enemy opponent)
 			throws SlickException {
@@ -68,6 +72,9 @@ public class BattleWindow implements Window {
 
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
+
+		textBottom = "";
+		textTop = "";
 	}
 
 	/**
@@ -114,6 +121,9 @@ public class BattleWindow implements Window {
 		ttf32.drawString(138, 20, "" + player.getHp(), Color.black);
 		ttf32.drawString(458, 20, "" + opponent.getHp(), Color.black);
 
+		ttf20.drawString(50, 200, textTop, Color.black);
+		ttf20.drawString(50, 250, textBottom, Color.black);
+
 		player.render(g, 144, 120);
 		opponent.render(g, 464, 120);
 
@@ -142,8 +152,15 @@ public class BattleWindow implements Window {
 
 		if (input.isKeyPressed(Input.KEY_X)) {
 			if (currentButton < 4) {
-				opponent.takeDamage(player.getAttack(currentButton));
-				player.takeDamage(opponent.getAttack(rand.nextInt(4)));
+				int dmg = opponent.takeDamage(player.getAttack(currentButton));
+				textTop = "player used "
+						+ player.getAttack(currentButton).getName()
+						+ ". Hit for " + dmg + "damage!";
+				int opponentAttack = rand.nextInt(4);
+				dmg = player.takeDamage(opponent.getAttack(opponentAttack));
+				textBottom = "opponent used "
+						+ opponent.getAttack(opponentAttack).getName()
+						+ ". Hit for " + dmg + "damage!";
 			}
 		}
 
