@@ -35,6 +35,8 @@ public abstract class GameObject {
 	protected String name;
 	protected int maxhp;
 	protected int hp;
+	protected int strength;
+	protected int intelligence;
 
 	protected Attack[] attacks;
 
@@ -50,8 +52,8 @@ public abstract class GameObject {
 	 *            pixels)
 	 * @param map
 	 */
-	public GameObject(int gridX, int gridY, String name, int maxhp, int speed,
-			int spriteOffset, Map map) {
+	public GameObject(int gridX, int gridY, String name, int maxhp,
+			int strength, int intelligence, int spriteOffset, Map map) {
 		this.gridX = gridX;
 		this.gridY = gridY;
 		this.map = map;
@@ -74,19 +76,23 @@ public abstract class GameObject {
 
 		this.name = name;
 		this.maxhp = maxhp;
-		hp = this.maxhp;
-		this.speed = speed;
+		this.hp = this.maxhp;
+		this.speed = 4;
+		this.strength = strength;
+		this.intelligence = intelligence;
 
 		attacks = new Attack[4]; // TODO:attacks, load from map
-		attacks[0] = new Attack("punch");
-		attacks[1] = new Attack("kick");
-		attacks[2] = new Attack("poke");
-		attacks[3] = new Attack("gross out");
+		attacks[0] = new Attack(0, strength, intelligence);
+		attacks[1] = new Attack(1, strength, intelligence);
+		attacks[2] = new Attack(2, strength, intelligence);
+		attacks[3] = new Attack(3, strength, intelligence);
 	}
 
 	public int takeDamage(Attack attack) {
-		hp -= attack.getNormalDamage() / 2; // TODO: Add armor, stats
-		return attack.getNormalDamage();
+		int oldHP = hp;
+		hp -= attack.getNormalDamage(); // TODO: Add armor, stats
+		hp -= attack.getMagicDamage();
+		return oldHP - hp;
 	}
 
 	public Attack getAttack(int n) {
@@ -181,6 +187,13 @@ public abstract class GameObject {
 	public void setDir(int direction) {
 		this.direction = direction;
 		sprite = spriteSheet.getSprite(direction, spriteOffset);
+	}
+
+	/**
+	 * @return direction object is facing, W=0;S=1;A=2;D=3;
+	 */
+	public int getDir() {
+		return direction;
 	}
 
 	/**

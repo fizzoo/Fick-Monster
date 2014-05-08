@@ -1,6 +1,7 @@
 package inda13projekt;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -23,6 +24,8 @@ public class BattleWindow implements Window {
 	private Graphics red;
 	private ArrayList<Button> buttons;
 	private int currentButton;
+	private Random rand;
+	private int playerOldDir, opponentOldDir;
 
 	public BattleWindow(Input input, Player player, Enemy opponent)
 			throws SlickException {
@@ -35,29 +38,33 @@ public class BattleWindow implements Window {
 		red = new Graphics();
 		red.setColor(new Color(255, 0, 0));
 
+		playerOldDir = player.getDir();
 		this.player.setDir(3);
+		opponentOldDir = opponent.getDir();
 		this.opponent.setDir(2);
 
+		rand = new Random();
+
 		buttons = new ArrayList<Button>();
-		buttons.add(new Button(0, 400, 128, 64, player.getAttack(0).getName(),
+		buttons.add(new Button(70, 400, 128, 64, player.getAttack(0).getName(),
 				0, new Image("././res/battle_button_hover.png"), new Image(
 						"././res/battle_button_normal.png")));
-		buttons.add(new Button(130, 400, 128, 64,
+		buttons.add(new Button(200, 400, 128, 64,
 				player.getAttack(1).getName(), 1, new Image(
 						"././res/battle_button_hover.png"), new Image(
 						"././res/battle_button_normal.png")));
-		buttons.add(new Button(260, 400, 128, 64,
+		buttons.add(new Button(330, 400, 128, 64,
 				player.getAttack(2).getName(), 2, new Image(
 						"././res/battle_button_hover.png"), new Image(
 						"././res/battle_button_normal.png")));
-		buttons.add(new Button(390, 400, 128, 64,
+		buttons.add(new Button(460, 400, 128, 64,
 				player.getAttack(3).getName(), 3, new Image(
 						"././res/battle_button_hover.png"), new Image(
 						"././res/battle_button_normal.png")));
 
-		buttons.add(new Button(520, 400, 128, 64, "Run", 4, new Image(
-				"././res/battle_button_hover.png"), new Image(
-				"././res/battle_button_normal.png")));
+		// buttons.add(new Button(520, 400, 128, 64, "Run", 4, new Image(
+		// "././res/battle_button_hover.png"), new Image(
+		// "././res/battle_button_normal.png")));
 
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
@@ -80,6 +87,8 @@ public class BattleWindow implements Window {
 		if (opponent.getHp() <= 0 || player.getHp() <= 0) {
 			player.setOpponent(null);
 			nextWindow = new OverWorldWindow(input, player);
+			player.setDir(playerOldDir);
+			opponent.setDir(opponentOldDir);
 		}
 	}
 
@@ -125,7 +134,7 @@ public class BattleWindow implements Window {
 		if (input.isKeyPressed(Input.KEY_X)) {
 			if (currentButton < 4) {
 				opponent.takeDamage(player.getAttack(currentButton));
-				player.takeDamage(opponent.getAttack(currentButton));
+				player.takeDamage(opponent.getAttack(rand.nextInt(4)));
 			}
 		}
 

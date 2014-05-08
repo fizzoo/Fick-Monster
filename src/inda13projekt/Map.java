@@ -33,8 +33,7 @@ public class Map {
 		try {
 			map = new TiledMap("././res/" + ref + ".tmx");
 		} catch (SlickException e) {
-			e.printStackTrace(); // Nothing else to do, wrong map is fatal since
-									// the user has no choice in it.
+			System.err.println("map" + ref + " not loaded correctly");
 		}
 
 		width = map.getWidth();
@@ -53,9 +52,10 @@ public class Map {
 				if (tileID != 0) {
 					objects.add(new Enemy(x, y, map.getTileProperty(tileID,
 							"name", null), Integer.parseInt(map
-							.getTileProperty(tileID, "maxhp", null)), Integer
-							.parseInt(map
-									.getTileProperty(tileID, "speed", null)),
+							.getTileProperty(tileID, "maxhp", null)),
+							Integer.parseInt(map.getTileProperty(tileID, "str",
+									null)), Integer.parseInt(map
+									.getTileProperty(tileID, "int", null)),
 							Integer.parseInt(map.getTileProperty(tileID,
 									"spriteOffset", null)), this));
 

@@ -7,9 +7,11 @@ package inda13projekt;
  * 
  */
 public class Player extends GameObject {
-	public Player(int gridX, int gridY, String name, int maxhp, int speed,
-			int spriteOffset, Map map) {
-		super(gridX, gridY, name, maxhp, speed, spriteOffset, map);
+
+	public Player(int gridX, int gridY, String name, int maxhp, int strength,
+			int intelligence, int spriteOffset, Map map) {
+		super(gridX, gridY, name, maxhp, strength, intelligence, spriteOffset,
+				map);
 	}
 
 	private Enemy opponent;
