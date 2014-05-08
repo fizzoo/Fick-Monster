@@ -36,16 +36,16 @@ public class MenuWindow implements Window {
 		this.player = player;
 
 		this.input = input;
-		input.clearKeyPressedRecord();
-		
+		this.input.clearKeyPressedRecord();
+
 		background = new Image("././res/bgi_test.bmp");
 		buttons = new ArrayList<Button>();
-		buttons.add(new Button(320, 128, 256, 128, "Start Game", 0, new Image("././res/button_hover.bmp",
-				new Color(255, 0, 255)), new Image("././res/button_normal.bmp", new Color(255, 0,
-						255))));
-		buttons.add(new Button(320, 320, 256, 128, "Exit  Game", 1, new Image("././res/button_hover.bmp",
-				new Color(255, 0, 255)), new Image("././res/button_normal.bmp", new Color(255, 0,
-						255))));
+		buttons.add(new Button(320, 128, 256, 128, "Start Game", 0, new Image(
+				"././res/button_hover.bmp", new Color(255, 0, 255)), new Image(
+				"././res/button_normal.bmp", new Color(255, 0, 255))));
+		buttons.add(new Button(320, 320, 256, 128, "Exit  Game", 1, new Image(
+				"././res/button_hover.bmp", new Color(255, 0, 255)), new Image(
+				"././res/button_normal.bmp", new Color(255, 0, 255))));
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
 		nextWindow = null;
@@ -89,7 +89,7 @@ public class MenuWindow implements Window {
 			}
 		}
 
-		if (input.isKeyPressed(Input.KEY_DOWN) 
+		if (input.isKeyPressed(Input.KEY_DOWN)
 				|| input.isKeyPressed(Input.KEY_S)) {
 			if (currentButton < buttons.size() - 1) {
 				currentButton++;

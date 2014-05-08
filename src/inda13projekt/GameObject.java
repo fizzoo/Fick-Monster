@@ -36,6 +36,8 @@ public abstract class GameObject {
 	protected int maxhp;
 	protected int hp;
 
+	protected Attack[] attacks;
+
 	/**
 	 * 
 	 * @param gridX
@@ -75,6 +77,20 @@ public abstract class GameObject {
 		hp = this.maxhp;
 		this.speed = speed;
 
+		attacks = new Attack[4]; // TODO:attacks, load from map
+		attacks[0] = new Attack("punch");
+		attacks[1] = new Attack("kick");
+		attacks[2] = new Attack("poke");
+		attacks[3] = new Attack("gross out");
+	}
+
+	public int takeDamage(Attack attack) {
+		hp -= attack.getNormalDamage() / 2; // TODO: Add armor, stats
+		return attack.getNormalDamage();
+	}
+
+	public Attack getAttack(int n) {
+		return attacks[n];
 	}
 
 	/**
