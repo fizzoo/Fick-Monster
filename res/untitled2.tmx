@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
-  <image source="test.png" width="64" height="64"/>
+  <image source="test.png" width="96" height="96"/>
   <tile id="0">
    <properties>
     <property name="nextMap" value="untitled"/>
-    <property name="xCoord" value="2"/>
-    <property name="yCoord" value="2"/>
+    <property name="x" value="2"/>
+    <property name="y" value="2"/>
    </properties>
   </tile>
   <tile id="1">
@@ -21,12 +21,12 @@
  </tileset>
  <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NmYGBgHsWjeBSP4lE8ikfxkMYAOaW0JNAHAAA=
+   H4sIAAAAAAAAC2NhYGBgGcWjeBSP4lE8ikfxkMYA6MiaddAHAAA=
   </data>
  </layer>
  <layer name="Collidable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjAAJYKMD0cBspaslx/3DwB73iYxSMglEw+AAAgQwJGdAHAAA=
+   H4sIAAAAAAAAC2NgGAWjAAJYKcD0cBspaslx/3DwB73iYxSMglEw+AAAIHMladAHAAA=
   </data>
  </layer>
  <layer name="Teleportable" width="25" height="20">

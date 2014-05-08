@@ -16,6 +16,7 @@ public class Map {
 	private int width;
 	private int height;
 	private int blockLayer;
+	private int backgroundLayer;
 	private ArrayList<GameObject> objects;
 	private GameObject[][] objectGrid;
 
@@ -42,6 +43,7 @@ public class Map {
 		camera = new Camera(width, height);
 
 		blockLayer = map.getLayerIndex("Collidable");
+		backgroundLayer = map.getLayerIndex("Background");
 
 		objectGrid = new GameObject[width][height];
 
@@ -148,8 +150,8 @@ public class Map {
 
 		String[] res = new String[3];
 		res[0] = map.getTileProperty(tileID, "nextMap", null);
-		res[1] = map.getTileProperty(tileID, "xCoord", null);
-		res[2] = map.getTileProperty(tileID, "yCoord", null);
+		res[1] = map.getTileProperty(tileID, "x", null);
+		res[2] = map.getTileProperty(tileID, "y", null);
 		return res;
 	}
 
@@ -160,6 +162,7 @@ public class Map {
 	 *            y location to start rendering, in pixels
 	 */
 	public void render() {
-		map.render(camera.getXOffset(), camera.getYoffset());
+		map.render(camera.getXOffset(), camera.getYoffset(), backgroundLayer);
+		map.render(camera.getXOffset(), camera.getYoffset(), blockLayer);
 	}
 }

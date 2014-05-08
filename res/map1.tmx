@@ -2,32 +2,41 @@
 <map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
   <image source="test.png" width="96" height="96"/>
+  <tile id="5">
+   <properties>
+    <property name="int" value="4"/>
+    <property name="maxhp" value="40"/>
+    <property name="name" value="peter"/>
+    <property name="spriteOffset" value="1"/>
+    <property name="str" value="12"/>
+   </properties>
+  </tile>
   <tile id="6">
    <properties>
-    <property name="nextMap" value="Untitled2"/>
-    <property name="x" value="0"/>
+    <property name="nextMap" value="untitled"/>
+    <property name="x" value="10"/>
     <property name="y" value="0"/>
    </properties>
   </tile>
  </tileset>
  <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NhYGBgGcUUYdZB4Iah6LaBDAdKw4US/bSME2qYPdzTzEDG/WD321Dx51B2Ky0xAPimXZLQBwAA
+   H4sIAAAAAAAAC2NhYGBgGcWjGIhZkTAt7WChkx34MCMSppU7GOlgz3CwA918etlBbXvoYQc2u2hh/igemhgA/w881NAHAAA=
   </data>
  </layer>
  <layer name="Collidable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGJqAmU7m09IeSuxgIoDJNZccQCt7mBloFw/MWDCtAC3NR45rcu1gIlKeEj8QawclgNZ2IOctWtpBDTW01D8KBi8AABD9chXQBwAA
+   H4sIAAAAAAAAC2NiYGBgGgSYGEArcymxi1JADzsI2UMtQGvz8dlDaztoAehhB7o9tDZ/1I7BYc9Qz4MDXeaSYw8t6kFS9QMAERaFINAHAAA=
   </data>
  </layer>
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAW4APtAO2AUjIJRMApGwSggEgAAVktwS9AHAAA=
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBQAN2NEwqAAAEEvWW0AcAAA==
   </data>
  </layer>
  <layer name="Enemies" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
+   H4sIAAAAAAAAC2NgGAWjYOQAtoF2wCgYBaNgFNAIAAAy7ZqI0AcAAA==
   </data>
  </layer>
 </map>

@@ -59,8 +59,8 @@ public class Game extends BasicGame {
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		input = gc.getInput();
-		currentWindow = new MenuWindow(input, new Player(0, 0, "DU", 80, 24,
-				16, 0, new Map("untitled2")));
+		currentWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 24,
+				16, 0, new Map("map1")));
 
 		gc.setShowFPS(false);
 	}
