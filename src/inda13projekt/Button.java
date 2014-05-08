@@ -1,9 +1,11 @@
 package inda13projekt;
 
+import java.awt.Font;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 
 /**
  * A button used to navigate the menu.
@@ -22,12 +24,14 @@ public class Button {
 	private int y;
 	private int width;
 	private int height;
+	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 20), true);
 
 	/**
   * 
   */
 	public Button(final int x, final int y, final int width, final int height,
-		final String text, final int buttonID, Image hover, Image normal) {
+			final String text, final int buttonID, Image hover, Image normal) {
 		this.hover = hover;
 		this.normal = normal;
 		this.text = text;
@@ -45,7 +49,7 @@ public class Button {
 		if (sprite != null) {
 			g.drawImage(sprite, x - width / 2, y - height / 2);
 		}
-		g.drawString(text, x - 45, y - 10);
+		ttf20.drawString(x - 45, y - 10, text, Color.black);
 	}
 
 	/**

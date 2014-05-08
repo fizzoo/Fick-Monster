@@ -1,5 +1,6 @@
 package inda13projekt;
 
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -9,6 +10,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 
 /**
  * Manages input, logic and drawing whilst in the battle screen.
@@ -21,11 +23,12 @@ public class BattleWindow implements Window {
 	private Player player;
 	private Enemy opponent;
 	private Window nextWindow;
-	private Graphics red;
 	private ArrayList<Button> buttons;
 	private int currentButton;
 	private Random rand;
 	private int playerOldDir, opponentOldDir;
+	private final TrueTypeFont ttf32 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 32), true);
 
 	public BattleWindow(Input input, Player player, Enemy opponent)
 			throws SlickException {
@@ -34,9 +37,6 @@ public class BattleWindow implements Window {
 		this.opponent = opponent;
 		nextWindow = null;
 		this.input.clearKeyPressedRecord();
-
-		red = new Graphics();
-		red.setColor(new Color(255, 0, 0));
 
 		playerOldDir = player.getDir();
 		this.player.setDir(3);
@@ -97,16 +97,25 @@ public class BattleWindow implements Window {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
+		// bg
+		g.setColor(Color.white);
 		g.fillRect(0, 0, 640, 480);
 
-		red.fillRect(0, 0, 320 * player.getHp() / player.getMaxHp(), 100);
-		g.drawString("" + player.getHp(), 160, 50);
+		// hp
+		g.setColor(Color.red);
+		g.fillRect(10, 10, 300 * player.getHp() / player.getMaxHp(), 60); // hp
+		g.fillRect(330, 10, 300 * opponent.getHp() / opponent.getMaxHp(), 60);
 
-		red.fillRect(320, 0, 320 * opponent.getHp() / opponent.getMaxHp(), 100);
-		g.drawString("" + opponent.getHp(), 480, 50);
+		// borders, text
+		g.setColor(Color.black);
+		g.drawRect(9, 9, 301, 61);
+		g.drawRect(329, 9, 301, 61);
 
-		player.render(g, 160, 120);
-		opponent.render(g, 480, 120);
+		ttf32.drawString(138, 20, "" + player.getHp(), Color.black);
+		ttf32.drawString(458, 20, "" + opponent.getHp(), Color.black);
+
+		player.render(g, 144, 120);
+		opponent.render(g, 464, 120);
 
 		for (Button button : buttons) {
 			button.render(g);
