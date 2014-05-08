@@ -159,12 +159,26 @@ public abstract class GameObject {
 	}
 
 	/**
-	 * 
 	 * @param direction
+	 *            to face, W=0;S=1;A=2;D=3;
 	 */
 	public void setDir(int direction) {
 		this.direction = direction;
 		sprite = spriteSheet.getSprite(direction, spriteOffset);
+	}
+
+	/**
+	 * @return maxhp
+	 */
+	public int getMaxHp() {
+		return maxhp;
+	}
+
+	/**
+	 * @return hp
+	 */
+	public int getHp() {
+		return hp;
 	}
 
 	/**
@@ -193,5 +207,12 @@ public abstract class GameObject {
 	 */
 	public void render(Graphics g) {
 		g.drawImage(sprite, x + camera.getXOffset(), y + camera.getYoffset());
+	}
+
+	/**
+	 * renders the objects sprite at specified x,y position, in pixels
+	 */
+	public void render(Graphics g, int x, int y) {
+		g.drawImage(sprite, x, y);
 	}
 }
