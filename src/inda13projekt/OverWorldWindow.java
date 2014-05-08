@@ -28,6 +28,7 @@ public class OverWorldWindow implements Window {
 		this.player = player;
 
 		this.input = input;
+		input.clearKeyPressedRecord();
 		nextWindow = null;
 	}
 

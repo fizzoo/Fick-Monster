@@ -2,10 +2,25 @@ package inda13projekt;
 
 import java.util.Random;
 
+/**
+ * 
+ * @author Alex
+ *
+ */
 public class Enemy extends GameObject {
 	private Random rand;
 	private int timeToAction;
 
+	/**
+	 * 
+	 * @param gridX
+	 * @param gridY
+	 * @param name
+	 * @param maxhp
+	 * @param speed
+	 * @param spriteOffset
+	 * @param map
+	 */
 	public Enemy(int gridX, int gridY, String name, int maxhp, int speed,
 			int spriteOffset, Map map) {
 		super(gridX, gridY, name, maxhp, speed, spriteOffset, map);
@@ -14,6 +29,9 @@ public class Enemy extends GameObject {
 		timeToAction = 0;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void update() {
 		if (timeToAction <= 0) {

@@ -77,6 +77,11 @@ public abstract class GameObject {
 
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 * @return
+	 */
 	public int getDirToX(int dir) {
 		switch (dir) {
 		case 2:
@@ -88,6 +93,11 @@ public abstract class GameObject {
 		}
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 * @return
+	 */
 	public int getDirToY(int dir) {
 		switch (dir) {
 		case 0:
@@ -99,6 +109,10 @@ public abstract class GameObject {
 		}
 	}
 
+	/**
+	 * 
+	 * @param dir
+	 */
 	public void move(int dir) {
 		if (!isMoving) {
 			setDir(dir);
@@ -144,6 +158,10 @@ public abstract class GameObject {
 		move(3);
 	}
 
+	/**
+	 * 
+	 * @param direction
+	 */
 	public void setDir(int direction) {
 		this.direction = direction;
 		sprite = spriteSheet.getSprite(direction, spriteOffset);

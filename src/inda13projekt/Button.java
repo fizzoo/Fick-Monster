@@ -27,15 +27,9 @@ public class Button {
   * 
   */
 	public Button(final int x, final int y, final int width, final int height,
-			final String text, final int buttonID) {
-		try {
-			normal = new Image("././res/button_normal.bmp", new Color(255, 0,
-					255));
-			hover = new Image("././res/button_hover.bmp",
-					new Color(255, 0, 255));
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		final String text, final int buttonID, Image hover, Image normal) {
+		this.hover = hover;
+		this.normal = normal;
 		this.text = text;
 		this.buttonID = buttonID;
 		this.x = x;

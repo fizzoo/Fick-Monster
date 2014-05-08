@@ -58,10 +58,18 @@ public class Camera {
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getXOffset() {
 		return xOffset;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getYoffset() {
 		return yOffset;
 	}

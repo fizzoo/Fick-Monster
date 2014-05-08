@@ -87,12 +87,26 @@ public class Map {
 		return (map.getTileId(x, y, blockLayer) != 0);
 	}
 
+	/**
+	 * 
+	 * @param oldX
+	 * @param oldY
+	 * @param x
+	 * @param y
+	 * @param object
+	 */
 	public void setObjectPlace(int oldX, int oldY, int x, int y,
 			GameObject object) {
 		objectGrid[oldX][oldY] = null;
 		objectGrid[x][y] = object;
 	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public GameObject getObjectPlace(int x, int y) {
 		if (x < 0)
 			return null;
