@@ -61,9 +61,9 @@ public abstract class GameObject {
 		try {
 			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		direction = 0;
 		sprite = spriteSheet.getSprite(direction, spriteOffset);
 

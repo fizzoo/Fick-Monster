@@ -56,7 +56,7 @@ public class OverWorldWindow implements Window {
 		}
 		player.update();
 		Enemy opponent = player.getOpponent();
-		if (opponent != null) {
+		if (opponent != null && opponent.getHp() > 0 && player.getHp() > 0) {
 			nextWindow = new BattleWindow(input, player, opponent);
 		}
 	}

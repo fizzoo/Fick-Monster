@@ -11,7 +11,7 @@
   </tile>
   <tile id="1">
    <properties>
-    <property name="maxhp" value="8"/>
+    <property name="maxhp" value="40"/>
     <property name="name" value="d"/>
     <property name="speed" value="4"/>
     <property name="spriteOffset" value="1"/>

@@ -78,6 +78,7 @@ public class BattleWindow implements Window {
 		}
 
 		if (opponent.getHp() <= 0 || player.getHp() <= 0) {
+			player.setOpponent(null);
 			nextWindow = new OverWorldWindow(input, player);
 		}
 	}
@@ -92,8 +93,7 @@ public class BattleWindow implements Window {
 		red.fillRect(0, 0, 320 * player.getHp() / player.getMaxHp(), 100);
 		g.drawString("" + player.getHp(), 160, 50);
 
-		red.fillRect(320, 0,
-				320 + 320 * opponent.getHp() / opponent.getMaxHp(), 100);
+		red.fillRect(320, 0, 320 * opponent.getHp() / opponent.getMaxHp(), 100);
 		g.drawString("" + opponent.getHp(), 480, 50);
 
 		player.render(g, 160, 120);

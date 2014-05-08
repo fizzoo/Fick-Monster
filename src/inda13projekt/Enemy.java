@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * 
  * @author Alex
- *
+ * 
  */
 public class Enemy extends GameObject {
 	private Random rand;
