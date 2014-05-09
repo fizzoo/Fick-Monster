@@ -4,9 +4,11 @@
   <image source="test.png" width="96" height="96"/>
   <tile id="5">
    <properties>
+    <property name="def" value="3"/>
     <property name="int" value="4"/>
     <property name="maxhp" value="40"/>
     <property name="name" value="peter"/>
+    <property name="res" value="0"/>
     <property name="spriteOffset" value="1"/>
     <property name="str" value="12"/>
    </properties>

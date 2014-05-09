@@ -58,6 +58,9 @@ public class Map {
 							Integer.parseInt(map.getTileProperty(tileID, "str",
 									null)), Integer.parseInt(map
 									.getTileProperty(tileID, "int", null)),
+							Integer.parseInt(map.getTileProperty(tileID, "def",
+									null)), Integer.parseInt(map
+									.getTileProperty(tileID, "res", null)),
 							Integer.parseInt(map.getTileProperty(tileID,
 									"spriteOffset", null)), this));
 

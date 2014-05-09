@@ -96,7 +96,8 @@ public class MenuWindow implements Window {
 			}
 		}
 
-		if (input.isKeyPressed(Input.KEY_X)) {
+		if (input.isKeyPressed(Input.KEY_X)
+				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
 			switch (currentButton) {
 			case 0:
 				nextWindow = new OverWorldWindow(input, player);

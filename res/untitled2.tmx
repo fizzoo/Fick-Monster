@@ -11,9 +11,11 @@
   </tile>
   <tile id="1">
    <properties>
+    <property name="def" value="5"/>
     <property name="int" value="0"/>
     <property name="maxhp" value="40"/>
     <property name="name" value="d"/>
+    <property name="res" value="200"/>
     <property name="spriteOffset" value="1"/>
     <property name="str" value="12"/>
    </properties>

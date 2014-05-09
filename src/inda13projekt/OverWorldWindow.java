@@ -44,7 +44,7 @@ public class OverWorldWindow implements Window {
 			player.moveLeft();
 		if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
 			player.moveRight();
-		if (input.isKeyDown(Input.KEY_X))
+		if (input.isKeyDown(Input.KEY_X) || input.isKeyDown(Input.KEY_RCONTROL))
 			player.talk();
 		if (input.isKeyDown(Input.KEY_ESCAPE))
 			nextWindow = new MenuWindow(input, player);
@@ -57,7 +57,11 @@ public class OverWorldWindow implements Window {
 		player.update();
 		Enemy opponent = player.getOpponent();
 		if (opponent != null && opponent.getHp() > 0 && player.getHp() > 0) {
+			// Message
 			nextWindow = new BattleWindow(input, player, opponent);
+		} else if (opponent != null && opponent.getHp() <= 0
+				&& player.getHp() > 0) {
+			// endMessage
 		}
 	}
 

@@ -150,17 +150,18 @@ public class BattleWindow implements Window {
 			}
 		}
 
-		if (input.isKeyPressed(Input.KEY_X)) {
+		if (input.isKeyPressed(Input.KEY_X)
+				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
 			if (currentButton < 4) {
 				int dmg = opponent.takeDamage(player.getAttack(currentButton));
-				textTop = "player used "
+				textTop = player.getName() + " used "
 						+ player.getAttack(currentButton).getName()
-						+ ". Hit for " + dmg + "damage!";
+						+ ". Hit for " + dmg + " damage!";
 				int opponentAttack = rand.nextInt(4);
 				dmg = player.takeDamage(opponent.getAttack(opponentAttack));
-				textBottom = "opponent used "
+				textBottom = opponent.getName() + " used "
 						+ opponent.getAttack(opponentAttack).getName()
-						+ ". Hit for " + dmg + "damage!";
+						+ ". Hit for " + dmg + " damage!";
 			}
 		}
 

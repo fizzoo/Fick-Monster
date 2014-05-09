@@ -22,9 +22,10 @@ public class Enemy extends GameObject {
 	 * @param map
 	 */
 	public Enemy(int gridX, int gridY, String name, int maxhp, int strength,
-			int intelligence, int spriteOffset, Map map) {
-		super(gridX, gridY, name, maxhp, strength, intelligence, spriteOffset,
-				map);
+			int intelligence, int defense, int resistance, int spriteOffset,
+			Map map) {
+		super(gridX, gridY, name, maxhp, strength, intelligence, defense,
+				resistance, spriteOffset, map);
 
 		rand = new Random();
 		timeToAction = 0;

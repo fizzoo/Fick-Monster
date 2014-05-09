@@ -37,6 +37,8 @@ public abstract class GameObject {
 	protected int hp;
 	protected int strength;
 	protected int intelligence;
+	protected int defense;
+	protected int resistance;
 
 	protected Attack[] attacks;
 
@@ -53,7 +55,8 @@ public abstract class GameObject {
 	 * @param map
 	 */
 	public GameObject(int gridX, int gridY, String name, int maxhp,
-			int strength, int intelligence, int spriteOffset, Map map) {
+			int strength, int intelligence, int defense, int resistance,
+			int spriteOffset, Map map) {
 		this.gridX = gridX;
 		this.gridY = gridY;
 		this.map = map;
@@ -80,6 +83,8 @@ public abstract class GameObject {
 		this.speed = 4;
 		this.strength = strength;
 		this.intelligence = intelligence;
+		this.defense = defense;
+		this.resistance = resistance;
 
 		attacks = new Attack[4]; // TODO:attacks, load from map
 		attacks[0] = new Attack(0, strength, intelligence);
@@ -88,10 +93,16 @@ public abstract class GameObject {
 		attacks[3] = new Attack(3, strength, intelligence);
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public int takeDamage(Attack attack) {
 		int oldHP = hp;
-		hp -= attack.getNormalDamage(); // TODO: Add armor, stats
-		hp -= attack.getMagicDamage();
+		hp -= (attack.getNormalDamage() - defense) > 0 ? (attack
+				.getNormalDamage() - defense) : 0; // TODO: Add armor, stats
+		hp -= (attack.getMagicDamage() - resistance) > 0 ? (attack
+				.getMagicDamage() - resistance) : 0;
 		return oldHP - hp;
 	}
 
