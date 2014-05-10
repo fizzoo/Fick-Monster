@@ -24,13 +24,13 @@ public class Enemy extends GameObject {
 	 * @param map
 	 */
 	public Enemy(int gridX, int gridY, String name, int maxhp, int strength,
-			int intelligence, int defense, int resistance, int spriteOffset,
-			Map map, String normalMessage, String defeatMessage) {
-		
-		super(gridX, gridY, name, maxhp, strength, intelligence, defense,
-				resistance, spriteOffset, map);
+			int intelligence, int defense, int resistance, int atk1, int atk2,
+			int atk3, int atk4, int spriteOffset, Map map,
+			String normalMessage, String defeatMessage) {
 
-		
+		super(gridX, gridY, name, maxhp, strength, intelligence, defense,
+				resistance, atk1, atk2, atk3, atk4, spriteOffset, map);
+
 		this.normalMessage = normalMessage;
 		this.defeatMessage = defeatMessage;
 		rand = new Random();
@@ -68,7 +68,7 @@ public class Enemy extends GameObject {
 
 		super.update();
 	}
-	
+
 	/**
 	 * 
 	 * @return the message displayed in the message box

@@ -19,6 +19,7 @@ public class Map {
 	private int backgroundLayer;
 	private ArrayList<GameObject> objects;
 	private GameObject[][] objectGrid;
+	private String name;
 
 	private Camera camera;
 
@@ -29,12 +30,14 @@ public class Map {
 	 *            Name of the mapfile
 	 */
 	public Map(String ref) {
+		name = ref;
+
 		objects = new ArrayList<>();
 
 		try {
-			map = new TiledMap("././res/" + ref + ".tmx");
+			map = new TiledMap("././res/" + name + ".tmx");
 		} catch (SlickException e) {
-			System.err.println("map" + ref + " not loaded correctly");
+			e.printStackTrace();
 		}
 
 		width = map.getWidth();
@@ -60,11 +63,11 @@ public class Map {
 									.getTileProperty(tileID, "int", null)),
 							Integer.parseInt(map.getTileProperty(tileID, "def",
 									null)), Integer.parseInt(map
-									.getTileProperty(tileID, "res", null)),
-							Integer.parseInt(map.getTileProperty(tileID,
-									"spriteOffset", null)), this, map.getTileProperty(tileID,
-											"mes1", null), map.getTileProperty(tileID,
-													"mes2", null)));
+									.getTileProperty(tileID, "res", null)), 0,
+							1, 2, 3, Integer.parseInt(map.getTileProperty(
+									tileID, "spriteOffset", null)), this, map
+									.getTileProperty(tileID, "mes1", null), map
+									.getTileProperty(tileID, "mes2", null)));
 
 				}
 			}
@@ -169,5 +172,9 @@ public class Map {
 	public void render() {
 		map.render(camera.getXOffset(), camera.getYoffset(), backgroundLayer);
 		map.render(camera.getXOffset(), camera.getYoffset(), blockLayer);
+	}
+
+	public String getName() {
+		return name;
 	}
 }

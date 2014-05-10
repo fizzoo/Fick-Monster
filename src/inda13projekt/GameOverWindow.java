@@ -18,7 +18,7 @@ public class GameOverWindow implements Window {
 
 	private final TrueTypeFont ttf32 = new TrueTypeFont(new Font("Verdana",
 			Font.PLAIN, 32), true);
-	
+
 	/**
 	 * 
 	 */
@@ -27,7 +27,7 @@ public class GameOverWindow implements Window {
 		this.input.clearKeyPressedRecord();
 		nextWindow = null;
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -37,7 +37,7 @@ public class GameOverWindow implements Window {
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
 			nextWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 24,
-					16, 10, 10, 0, new Map("map1")));
+					16, 10, 10, 0, 1, 2, 3, 0, new Map("map1")));
 		}
 	}
 

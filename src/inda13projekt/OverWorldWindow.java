@@ -1,5 +1,10 @@
 package inda13projekt;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
 
 import org.newdawn.slick.GameContainer;
@@ -52,6 +57,13 @@ public class OverWorldWindow implements Window {
 				player.talk();
 			if (input.isKeyDown(Input.KEY_ESCAPE))
 				nextWindow = new MenuWindow(input, player);
+
+			if (input.isKeyDown(Input.KEY_F5)) {
+				save();
+			}
+			if (input.isKeyDown(Input.KEY_F9)) {
+				load();
+			}
 
 			Iterator<GameObject> it = player.getMap().getObjects().iterator();
 
@@ -111,5 +123,23 @@ public class OverWorldWindow implements Window {
 	@Override
 	public Window getNextWindow() {
 		return nextWindow;
+	}
+
+	public void save() {
+		try (ObjectOutputStream out = new ObjectOutputStream(
+				new FileOutputStream("././res/save"))) {
+			player.save(out);
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+	}
+
+	public void load() {
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(
+				"././res/save"))) {
+			player.load(in);
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
 	}
 }

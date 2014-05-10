@@ -56,9 +56,12 @@ public abstract class GameObject {
 	 */
 	public GameObject(int gridX, int gridY, String name, int maxhp,
 			int strength, int intelligence, int defense, int resistance,
-			int spriteOffset, Map map) {
+			int atk1, int atk2, int atk3, int atk4, int spriteOffset, Map map) {
 		this.gridX = gridX;
 		this.gridY = gridY;
+		x = 32 * gridX;
+		y = 32 * gridY;
+
 		this.map = map;
 		this.map.setObjectPlace(gridX, gridY, gridX, gridY, this);
 		camera = this.map.getCamera();
@@ -68,14 +71,9 @@ public abstract class GameObject {
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
-
 		direction = 0;
-		sprite = spriteSheet.getSprite(direction, spriteOffset);
-
-		x = 32 * gridX;
-		y = 32 * gridY;
-
 		this.spriteOffset = spriteOffset;
+		sprite = spriteSheet.getSprite(direction, spriteOffset);
 
 		this.name = name;
 		this.maxhp = maxhp;
@@ -86,11 +84,11 @@ public abstract class GameObject {
 		this.defense = defense;
 		this.resistance = resistance;
 
-		attacks = new Attack[4]; // TODO:attacks, load from map
-		attacks[0] = new Attack(0, strength, intelligence);
-		attacks[1] = new Attack(1, strength, intelligence);
-		attacks[2] = new Attack(2, strength, intelligence);
-		attacks[3] = new Attack(3, strength, intelligence);
+		attacks = new Attack[4];
+		attacks[0] = new Attack(atk1, strength, intelligence);
+		attacks[1] = new Attack(atk2, strength, intelligence);
+		attacks[2] = new Attack(atk3, strength, intelligence);
+		attacks[3] = new Attack(atk4, strength, intelligence);
 	}
 
 	/**
@@ -112,7 +110,7 @@ public abstract class GameObject {
 				.getNormalDamage() - defense) : 0; // TODO: Add armor, stats
 		hp -= (attack.getMagicDamage() - resistance) > 0 ? (attack
 				.getMagicDamage() - resistance) : 0;
-		if(hp < 0)
+		if (hp < 0)
 			hp = 0;
 		return oldHP - hp;
 	}
@@ -228,6 +226,10 @@ public abstract class GameObject {
 	 */
 	public int getMaxHp() {
 		return maxhp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
 	}
 
 	/**

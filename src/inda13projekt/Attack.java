@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * @author Alex
- *
+ * 
  */
 public class Attack {
 	private String name;
@@ -37,7 +37,7 @@ public class Attack {
 			magicDamage = magic + intScale * intelligence / 100;
 
 		} catch (Exception e) {
-			System.err.println("attacksfile not loaded correctly");
+			e.printStackTrace();
 		}
 	}
 

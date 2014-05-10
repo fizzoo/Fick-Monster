@@ -1,5 +1,7 @@
 package inda13projekt;
 
+import java.io.IOException;
+
 /**
  * A class used to represent the player. Handles the players movements.
  * 
@@ -22,13 +24,18 @@ public class Player extends GameObject {
 	 * @param map
 	 */
 	public Player(int gridX, int gridY, String name, int maxhp, int strength,
-			int intelligence, int defense, int resistance, int spriteOffset,
-			Map map) {
+			int intelligence, int defense, int resistance, int atk1, int atk2,
+			int atk3, int atk4, int spriteOffset, Map map) {
 		super(gridX, gridY, name, maxhp, strength, intelligence, defense,
-				resistance, spriteOffset, map);
+				resistance, atk1, atk2, atk3, atk4, spriteOffset, map);
+		this.atk1 = atk1;
+		this.atk2 = atk2;
+		this.atk3 = atk3;
+		this.atk4 = atk4;
 	}
 
 	private Enemy opponent;
+	private int atk1, atk2, atk3, atk4;
 
 	/**
 	 * @return map the player is in
@@ -101,4 +108,67 @@ public class Player extends GameObject {
 		this.opponent = opponent;
 	}
 
+	public void save(java.io.ObjectOutputStream stream) throws IOException {
+		stream.writeInt(gridX);
+		stream.writeInt(gridY);
+		stream.writeInt(speed);
+		stream.writeInt(maxhp);
+		stream.writeInt(hp);
+		stream.writeInt(strength);
+		stream.writeInt(intelligence);
+		stream.writeInt(defense);
+		stream.writeInt(resistance);
+		stream.writeInt(direction);
+		stream.writeInt(atk1);
+		stream.writeInt(atk2);
+		stream.writeInt(atk3);
+		stream.writeInt(atk4);
+
+		stream.writeBoolean(isMoving);
+
+		stream.writeObject(name);
+		stream.writeObject(map.getName());// STRINGOBJ
+
+	}
+
+	public void load(java.io.ObjectInputStream stream) throws IOException {
+		gridX = stream.readInt();
+		gridY = stream.readInt();
+		x = 32 * gridX;
+		y = 32 * gridY;
+		speed = stream.readInt();
+		maxhp = stream.readInt();
+		hp = stream.readInt();
+		strength = stream.readInt();
+		intelligence = stream.readInt();
+		defense = stream.readInt();
+		resistance = stream.readInt();
+
+		direction = stream.readInt();
+		sprite = spriteSheet.getSprite(direction, spriteOffset);
+
+		atk1 = stream.readInt();
+		atk2 = stream.readInt();
+		atk3 = stream.readInt();
+		atk4 = stream.readInt();
+
+		attacks = new Attack[4];
+		attacks[0] = new Attack(atk1, strength, intelligence);
+		attacks[1] = new Attack(atk2, strength, intelligence);
+		attacks[2] = new Attack(atk3, strength, intelligence);
+		attacks[3] = new Attack(atk4, strength, intelligence);
+
+		String mapname = "";
+		try {
+			name = (String) stream.readObject();
+			mapname = (String) stream.readObject();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		map = new Map(mapname);
+		this.map.setObjectPlace(gridX, gridY, gridX, gridY, this);
+		camera = this.map.getCamera();
+
+	}
 }
