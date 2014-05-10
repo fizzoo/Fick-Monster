@@ -108,6 +108,13 @@ public class Player extends GameObject {
 		this.opponent = opponent;
 	}
 
+	/**
+	 * Writes player state to file
+	 * 
+	 * @param stream
+	 *            objectstream to use
+	 * @throws IOException
+	 */
 	public void save(java.io.ObjectOutputStream stream) throws IOException {
 		stream.writeInt(gridX);
 		stream.writeInt(gridY);
@@ -129,6 +136,13 @@ public class Player extends GameObject {
 
 	}
 
+	/**
+	 * Reads player state from file
+	 * 
+	 * @param stream
+	 *            objectstream to use
+	 * @throws IOException
+	 */
 	public void load(java.io.ObjectInputStream stream) throws IOException {
 		gridX = stream.readInt();
 		gridY = stream.readInt();

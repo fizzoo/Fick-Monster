@@ -112,13 +112,16 @@ public class OverWorldWindow implements Window {
 	}
 
 	/**
-	 * Changes window when not null.
+	 * Handles window transition
 	 */
 	@Override
 	public Window getNextWindow() {
 		return nextWindow;
 	}
 
+	/**
+	 * Saves player state to file
+	 */
 	public void save() {
 		try (ObjectOutputStream out = new ObjectOutputStream(
 				new FileOutputStream("././res/save"))) {
@@ -128,6 +131,9 @@ public class OverWorldWindow implements Window {
 		}
 	}
 
+	/**
+	 * Loads player state from file
+	 */
 	public void load() {
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(
 				"././res/save"))) {

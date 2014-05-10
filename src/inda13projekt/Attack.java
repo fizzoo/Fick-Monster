@@ -4,7 +4,8 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
- * @author Alex
+ * An attack, responsible for reading the attack from a file and calculating
+ * damage pre-defense
  * 
  */
 public class Attack {
@@ -13,10 +14,14 @@ public class Attack {
 	private int magicDamage;
 
 	/**
+	 * Reads an attack and scales the damage.
 	 * 
 	 * @param attackID
+	 *            Number of the attack, as row in attacks.txt
 	 * @param strength
+	 *            strength of attacker
 	 * @param intelligence
+	 *            intelligence of attacker
 	 */
 	public Attack(int attackID, int strength, int intelligence) {
 		try (Scanner scanner = new Scanner(new File("././res/attacks.txt"))) {
@@ -42,23 +47,21 @@ public class Attack {
 	}
 
 	/**
-	 * @return
+	 * @return name of attack
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return normal damage to deal
 	 */
 	public int getNormalDamage() {
 		return normalDamage;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return magic damage to deal
 	 */
 	public int getMagicDamage() {
 		return magicDamage;

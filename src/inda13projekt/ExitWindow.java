@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 /**
  * 
  * @author Alex
- *
+ * 
  */
 public class ExitWindow implements Window {
 
@@ -21,17 +21,16 @@ public class ExitWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Renders all the objects in the window
 	 */
 	@Override
-	public void render(GameContainer gc, Graphics g)
-			throws SlickException {
+	public void render(GameContainer gc, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 
 	}
 
 	/**
-	 * 
+	 * Handles window transition
 	 */
 	@Override
 	public Window getNextWindow() {

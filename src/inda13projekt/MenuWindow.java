@@ -52,7 +52,7 @@ public class MenuWindow implements Window {
 	}
 
 	/**
-	 * updates the window and checks for which button is currently selected.
+	 * Updates the window and checks for which button is currently selected.
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -110,8 +110,8 @@ public class MenuWindow implements Window {
 	}
 
 	/**
-  * 
-  */
+	 * Handles window transition
+	 */
 	@Override
 	public Window getNextWindow() {
 		// TODO Auto-generated method stub

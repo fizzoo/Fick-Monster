@@ -92,22 +92,21 @@ public abstract class GameObject {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return name of object
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * 
 	 * @param attack
-	 * @return
+	 *            Attack to take damage from
+	 * @return damage taken
 	 */
 	public int takeDamage(Attack attack) {
 		int oldHP = hp;
 		hp -= (attack.getNormalDamage() - defense) > 0 ? (attack
-				.getNormalDamage() - defense) : 0; // TODO: Add armor, stats
+				.getNormalDamage() - defense) : 0;
 		hp -= (attack.getMagicDamage() - resistance) > 0 ? (attack
 				.getMagicDamage() - resistance) : 0;
 		if (hp < 0)
@@ -116,18 +115,19 @@ public abstract class GameObject {
 	}
 
 	/**
-	 * 
 	 * @param n
-	 * @return
+	 *            slot of the attack (0-3)
+	 * @return Attack in said slot
 	 */
 	public Attack getAttack(int n) {
 		return attacks[n];
 	}
 
 	/**
-	 * 
 	 * @param dir
-	 * @return
+	 *            Direction, W=0;S=1;A=2;D=3;
+	 * @return x offset of tile the object is looking at, +1 if east, -1 if
+	 *         west, 0 otherwise
 	 */
 	public int getDirToX(int dir) {
 		switch (dir) {
@@ -141,9 +141,9 @@ public abstract class GameObject {
 	}
 
 	/**
-	 * 
 	 * @param dir
-	 * @return
+	 * @return y offset of tile the object is looking at, +1 if south, -1 if
+	 *         north, 0 otherwise
 	 */
 	public int getDirToY(int dir) {
 		switch (dir) {
@@ -157,8 +157,10 @@ public abstract class GameObject {
 	}
 
 	/**
+	 * Tries to move in a direction, W=0;S=1;A=2;D=3;
 	 * 
 	 * @param dir
+	 *            direction, W=0;S=1;A=2;D=3;
 	 */
 	public void move(int dir) {
 		if (!isMoving) {
@@ -222,18 +224,22 @@ public abstract class GameObject {
 	}
 
 	/**
-	 * @return maxhp
+	 * @return maximum hp of object
 	 */
 	public int getMaxHp() {
 		return maxhp;
 	}
 
+	/**
+	 * @param hp
+	 *            current hp to set object at
+	 */
 	public void setHp(int hp) {
 		this.hp = hp;
 	}
 
 	/**
-	 * @return hp
+	 * @return current hp
 	 */
 	public int getHp() {
 		return hp;

@@ -36,6 +36,7 @@ public class BattleWindow implements Window {
 	private boolean won;
 
 	/**
+	 * Starts a battle screen
 	 * 
 	 * @param input
 	 * @param player
@@ -88,7 +89,7 @@ public class BattleWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Checks for input and updates all objects.
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -110,7 +111,7 @@ public class BattleWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Renders all the objects in the window
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
@@ -194,7 +195,7 @@ public class BattleWindow implements Window {
 	}
 
 	/**
-	 * Changes window when not null.
+	 * Handles window transition
 	 */
 	@Override
 	public Window getNextWindow() {

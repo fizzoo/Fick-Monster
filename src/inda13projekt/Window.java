@@ -12,21 +12,21 @@ import org.newdawn.slick.SlickException;
  */
 public interface Window {
 	/**
-	 * updates all the objects in the window
+	 * Checks for input and updates all objects.
 	 * 
 	 * @throws SlickException
 	 */
 	public void update(GameContainer gc, int delta) throws SlickException;
 
 	/**
-	 * renders all the objects in the window
+	 * Renders all the objects in the window
 	 * 
 	 * @throws SlickException
 	 */
 	public void render(GameContainer gc, Graphics g) throws SlickException;
 
 	/**
-	 * handles window transition
+	 * Handles window transition
 	 * 
 	 * @return
 	 */

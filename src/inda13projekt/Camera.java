@@ -1,6 +1,5 @@
 package inda13projekt;
 
-
 /**
  * The camera is used to keep track of the offset used to render the tilemap and
  * objects
@@ -60,16 +59,14 @@ public class Camera {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return the x offset which should be added to anything rendered
 	 */
 	public int getXOffset() {
 		return xOffset;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * @return the y offset which should be added to anything rendered
 	 */
 	public int getYoffset() {
 		return yOffset;

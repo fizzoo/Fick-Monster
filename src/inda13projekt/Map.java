@@ -98,12 +98,18 @@ public class Map {
 	}
 
 	/**
+	 * Manages the object grid by recording where objects have moved.
 	 * 
 	 * @param oldX
+	 *            x location, in tiles, to move from
 	 * @param oldY
+	 *            y location, in tiles, to move from
 	 * @param x
+	 *            x location, in tiles, to move to
 	 * @param y
+	 *            y location, in tiles, to move to
 	 * @param object
+	 *            object moving to said location
 	 */
 	public void setObjectPlace(int oldX, int oldY, int x, int y,
 			GameObject object) {
@@ -112,10 +118,11 @@ public class Map {
 	}
 
 	/**
-	 * 
 	 * @param x
+	 *            x location, in tiles, to check
 	 * @param y
-	 * @return
+	 *            y location, in tiles, to check
+	 * @return Object on said tile, if there is one there
 	 */
 	public GameObject getObjectPlace(int x, int y) {
 		if (x < 0)
@@ -174,6 +181,9 @@ public class Map {
 		map.render(camera.getXOffset(), camera.getYoffset(), blockLayer);
 	}
 
+	/**
+	 * @return name of the map, specifically map file without .tmx
+	 */
 	public String getName() {
 		return name;
 	}

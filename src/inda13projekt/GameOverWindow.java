@@ -29,7 +29,7 @@ public class GameOverWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Checks for input to restart game.
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -42,7 +42,7 @@ public class GameOverWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Renders all the objects in the window
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
@@ -54,7 +54,7 @@ public class GameOverWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * Handles window transition
 	 */
 	@Override
 	public Window getNextWindow() {
