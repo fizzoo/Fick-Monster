@@ -33,7 +33,15 @@ public class BattleWindow implements Window {
 			Font.PLAIN, 20), true);
 	private String textTop;
 	private String textBottom;
+	private MessageBox messageBox;
 
+	/**
+	 * 
+	 * @param input
+	 * @param player
+	 * @param opponent
+	 * @throws SlickException
+	 */
 	public BattleWindow(Input input, Player player, Enemy opponent)
 			throws SlickException {
 		this.input = input;
@@ -90,12 +98,20 @@ public class BattleWindow implements Window {
 				button.setImage(false);
 			}
 		}
+		
+		if(messageBox != null) {
+			messageBox.update();
+		}
 
 		if (opponent.getHp() <= 0 || player.getHp() <= 0) {
 			player.setOpponent(null);
-			nextWindow = new OverWorldWindow(input, player);
 			player.setDir(playerOldDir);
 			opponent.setDir(opponentOldDir);
+			if(messageBox == null)
+				messageBox = new MessageBox(opponent.getName(), opponent.getMessage(), 5);
+			
+			if (messageBox != null && messageBox.getDone())
+				nextWindow = new OverWorldWindow(input, player);
 		}
 	}
 
@@ -130,6 +146,9 @@ public class BattleWindow implements Window {
 		for (Button button : buttons) {
 			button.render(g);
 		}
+		
+		if(messageBox != null)
+			messageBox.render(g);
 	}
 
 	/**

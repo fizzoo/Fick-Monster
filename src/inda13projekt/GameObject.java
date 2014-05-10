@@ -93,10 +93,19 @@ public abstract class GameObject {
 		attacks[3] = new Attack(3, strength, intelligence);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @param attack
+	 * @return
+	 */
 	public int takeDamage(Attack attack) {
 		int oldHP = hp;
 		hp -= (attack.getNormalDamage() - defense) > 0 ? (attack
@@ -106,6 +115,11 @@ public abstract class GameObject {
 		return oldHP - hp;
 	}
 
+	/**
+	 * 
+	 * @param n
+	 * @return
+	 */
 	public Attack getAttack(int n) {
 		return attacks[n];
 	}

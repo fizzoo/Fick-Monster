@@ -8,6 +8,19 @@ package inda13projekt;
  */
 public class Player extends GameObject {
 
+	/**
+	 * 
+	 * @param gridX
+	 * @param gridY
+	 * @param name
+	 * @param maxhp
+	 * @param strength
+	 * @param intelligence
+	 * @param defense
+	 * @param resistance
+	 * @param spriteOffset
+	 * @param map
+	 */
 	public Player(int gridX, int gridY, String name, int maxhp, int strength,
 			int intelligence, int defense, int resistance, int spriteOffset,
 			Map map) {
@@ -43,6 +56,9 @@ public class Player extends GameObject {
 		isMoving = false;
 	}
 
+	/**
+	 * 
+	 */
 	public void talk() {
 		int xOffset = getDirToX(direction);
 		int yOffset = getDirToY(direction);
@@ -69,10 +85,18 @@ public class Player extends GameObject {
 		camera.setLocation((int) x, (int) y);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Enemy getOpponent() {
 		return opponent;
 	}
 
+	/**
+	 * 
+	 * @param opponent
+	 */
 	public void setOpponent(Enemy opponent) {
 		this.opponent = opponent;
 	}

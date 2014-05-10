@@ -3,11 +3,21 @@ package inda13projekt;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * @author Alex
+ *
+ */
 public class Attack {
 	private String name;
 	private int normalDamage;
 	private int magicDamage;
 
+	/**
+	 * 
+	 * @param attackID
+	 * @param strength
+	 * @param intelligence
+	 */
 	public Attack(int attackID, int strength, int intelligence) {
 		try (Scanner scanner = new Scanner(new File("././res/attacks.txt"))) {
 
@@ -31,14 +41,25 @@ public class Attack {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getNormalDamage() {
 		return normalDamage;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getMagicDamage() {
 		return magicDamage;
 	}

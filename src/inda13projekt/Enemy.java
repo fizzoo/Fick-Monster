@@ -10,6 +10,8 @@ import java.util.Random;
 public class Enemy extends GameObject {
 	private Random rand;
 	private int timeToAction;
+	private String normalMessage;
+	private String defeatMessage;
 
 	/**
 	 * 
@@ -23,10 +25,14 @@ public class Enemy extends GameObject {
 	 */
 	public Enemy(int gridX, int gridY, String name, int maxhp, int strength,
 			int intelligence, int defense, int resistance, int spriteOffset,
-			Map map) {
+			Map map, String normalMessage, String defeatMessage) {
+		
 		super(gridX, gridY, name, maxhp, strength, intelligence, defense,
 				resistance, spriteOffset, map);
 
+		
+		this.normalMessage = normalMessage;
+		this.defeatMessage = defeatMessage;
 		rand = new Random();
 		timeToAction = 0;
 	}
@@ -61,5 +67,16 @@ public class Enemy extends GameObject {
 		}
 
 		super.update();
+	}
+	
+	/**
+	 * 
+	 * @return the message displayed in the message box
+	 */
+	public String getMessage() {
+		if (hp <= 0)
+			return defeatMessage;
+		else
+			return normalMessage;
 	}
 }

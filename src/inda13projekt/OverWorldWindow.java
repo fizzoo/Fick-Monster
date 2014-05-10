@@ -17,6 +17,7 @@ public class OverWorldWindow implements Window {
 	private Input input;
 	private Player player;
 	private Window nextWindow;
+	private MessageBox messageBox;
 
 	/**
 	 * Creates a new map and places the player on it.
@@ -56,12 +57,23 @@ public class OverWorldWindow implements Window {
 		}
 		player.update();
 		Enemy opponent = player.getOpponent();
-		if (opponent != null && opponent.getHp() > 0 && player.getHp() > 0) {
+		if(opponent != null && messageBox == null) {
+			messageBox = new MessageBox(opponent.getName(), opponent.getMessage(), 5);
+		}
+		if (opponent != null && opponent.getHp() > 0 && player.getHp() > 0 && messageBox != null && messageBox.getDone()) {
 			// Message
 			nextWindow = new BattleWindow(input, player, opponent);
 		} else if (opponent != null && opponent.getHp() <= 0
 				&& player.getHp() > 0) {
+			if(messageBox.getDone()) {
+				messageBox = null;
+				player.setOpponent(null);
+			}
 			// endMessage
+		}
+		
+		if(messageBox != null) {
+			messageBox.update();
 		}
 	}
 
@@ -78,6 +90,8 @@ public class OverWorldWindow implements Window {
 			it.next().render(g);
 		}
 		player.render(g);
+		if(messageBox != null)
+			messageBox.render(g);
 	}
 
 	/**
