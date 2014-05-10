@@ -76,22 +76,15 @@ public class OverWorldWindow implements Window {
 		Enemy opponent = player.getOpponent();
 
 		if (opponent != null) {
-			if (opponent.getHp() > 0) {
-				if (messageBox == null) {
-					messageBox = new MessageBox(opponent.getName(),
-							opponent.getMessage(), 5);
-				} else if (!messageBox.getDone()) {
-					messageBox.update();
-				} else {
+			if (messageBox == null) {
+				messageBox = new MessageBox(opponent.getName(),
+						opponent.getMessage(), 5);
+			} else if (!messageBox.getDone()) {
+				messageBox.update();
+			} else {
+				if (opponent.getHp() > 0) {
 					nextWindow = new BattleWindow(input, player, opponent);
 					messageBox = null;
-				}
-			} else {
-				if (messageBox == null) {
-					messageBox = new MessageBox(opponent.getName(),
-							opponent.getMessage(), 5);
-				} else if (!messageBox.getDone()) {
-					messageBox.update();
 				} else {
 					player.setOpponent(null);
 					messageBox = null;
