@@ -33,7 +33,7 @@ public class BattleWindow implements Window {
 			Font.PLAIN, 20), true);
 	private String textTop;
 	private String textBottom;
-	private MessageBox messageBox;
+	private boolean won;
 
 	/**
 	 * 
@@ -83,6 +83,8 @@ public class BattleWindow implements Window {
 
 		textBottom = "";
 		textTop = "";
+
+		won = false;
 	}
 
 	/**
@@ -98,20 +100,9 @@ public class BattleWindow implements Window {
 				button.setImage(false);
 			}
 		}
-		
-		if(messageBox != null) {
-			messageBox.update();
-		}
 
 		if (opponent.getHp() <= 0) {
-			player.setOpponent(null);
-			player.setDir(playerOldDir);
-			opponent.setDir(opponentOldDir);
-			if(messageBox == null)
-				messageBox = new MessageBox(opponent.getName(), opponent.getMessage(), 5);
-			
-			if (messageBox != null && messageBox.getDone())
-				nextWindow = new OverWorldWindow(input, player);
+			won = true;
 		}
 		if (player.getHp() <= 0) {
 			nextWindow = new GameOverWindow(input);
@@ -149,15 +140,22 @@ public class BattleWindow implements Window {
 		for (Button button : buttons) {
 			button.render(g);
 		}
-		
-		if(messageBox != null)
-			messageBox.render(g);
 	}
 
 	/**
 	 * handles the input of the battlewindow
 	 */
 	private void handleBattleInput() {
+		if (won) {
+			if (input.isKeyPressed(Input.KEY_X)
+					|| input.isKeyPressed(Input.KEY_RCONTROL)) {
+				player.setDir(playerOldDir);
+				opponent.setDir(opponentOldDir);
+				nextWindow = new OverWorldWindow(input, player);
+			}
+			return;
+		}
+
 		if (input.isKeyPressed(Input.KEY_LEFT)
 				|| input.isKeyPressed(Input.KEY_A)) {
 			if (currentButton > 0) {
@@ -179,12 +177,17 @@ public class BattleWindow implements Window {
 				textTop = player.getName() + " used "
 						+ player.getAttack(currentButton).getName()
 						+ ". Hit for " + dmg + " damage!";
-				
-				int opponentAttack = rand.nextInt(4);
-				dmg = player.takeDamage(opponent.getAttack(opponentAttack));
-				textBottom = opponent.getName() + " used "
-						+ opponent.getAttack(opponentAttack).getName()
-						+ ". Hit for " + dmg + " damage!";
+
+				if (opponent.getHp() > 0) {
+					int opponentAttack = rand.nextInt(4);
+					dmg = player.takeDamage(opponent.getAttack(opponentAttack));
+					textBottom = opponent.getName() + " used "
+							+ opponent.getAttack(opponentAttack).getName()
+							+ ". Hit for " + dmg + " damage!";
+				} else {
+					textBottom = "You have won! Press X / CTRL to continue.";
+					won = true;
+				}
 			}
 		}
 

@@ -44,13 +44,15 @@ public class OverWorldWindow implements Window {
 				player.moveDown();
 			if (input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
 				player.moveLeft();
-			if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
+			if (input.isKeyDown(Input.KEY_D)
+					|| input.isKeyDown(Input.KEY_RIGHT))
 				player.moveRight();
-			if (input.isKeyDown(Input.KEY_X) || input.isKeyDown(Input.KEY_RCONTROL))
+			if (input.isKeyDown(Input.KEY_X)
+					|| input.isKeyDown(Input.KEY_RCONTROL))
 				player.talk();
 			if (input.isKeyDown(Input.KEY_ESCAPE))
 				nextWindow = new MenuWindow(input, player);
-	
+
 			Iterator<GameObject> it = player.getMap().getObjects().iterator();
 
 			while (it.hasNext()) {
@@ -58,25 +60,32 @@ public class OverWorldWindow implements Window {
 			}
 			player.update();
 		}
+
 		Enemy opponent = player.getOpponent();
-		if(opponent != null && messageBox == null) {
-			messageBox = new MessageBox(opponent.getName(), opponent.getMessage(), 5);
-		}
-		if (opponent != null && opponent.getHp() > 0 && player.getHp() > 0 && messageBox != null && messageBox.getDone()) {
-			// Message
-			nextWindow = new BattleWindow(input, player, opponent);
-		} else if (opponent != null && opponent.getHp() <= 0
-				&& player.getHp() > 0) {
-			if(messageBox.getDone()) {
-				messageBox = null;
-				player.setOpponent(null);
-			}
-			// endMessage
-		}
-		
-		if(messageBox != null) {
+
+		if (opponent != null && opponent.getHp() > 0 && messageBox == null) {
+			messageBox = new MessageBox(opponent.getName(),
+					opponent.getMessage(), 5);
+		} else if (opponent != null && opponent.getHp() > 0
+				&& messageBox != null && !messageBox.getDone()) {
 			messageBox.update();
+		} else if (opponent != null && opponent.getHp() > 0
+				&& messageBox != null && messageBox.getDone()) {
+			nextWindow = new BattleWindow(input, player, opponent);
+			messageBox = null;
+		} else if (opponent != null && opponent.getHp() <= 0
+				&& messageBox == null) {
+			messageBox = new MessageBox(opponent.getName(),
+					opponent.getMessage(), 5);
+		} else if (opponent != null && opponent.getHp() <= 0
+				&& messageBox != null && !messageBox.getDone()) {
+			messageBox.update();
+		} else if (opponent != null && opponent.getHp() <= 0
+				&& messageBox != null && messageBox.getDone()) {
+			player.setOpponent(null);
+			messageBox = null;
 		}
+
 	}
 
 	/**
@@ -92,7 +101,7 @@ public class OverWorldWindow implements Window {
 			it.next().render(g);
 		}
 		player.render(g);
-		if(messageBox != null)
+		if (messageBox != null)
 			messageBox.render(g);
 	}
 
