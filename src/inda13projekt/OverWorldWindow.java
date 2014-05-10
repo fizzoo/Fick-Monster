@@ -37,25 +37,27 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
-			player.moveUp();
-		if (input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
-			player.moveDown();
-		if (input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
-			player.moveLeft();
-		if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
-			player.moveRight();
-		if (input.isKeyDown(Input.KEY_X) || input.isKeyDown(Input.KEY_RCONTROL))
-			player.talk();
-		if (input.isKeyDown(Input.KEY_ESCAPE))
-			nextWindow = new MenuWindow(input, player);
+		if (player.getOpponent() == null) {
+			if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
+				player.moveUp();
+			if (input.isKeyDown(Input.KEY_S) || input.isKeyDown(Input.KEY_DOWN))
+				player.moveDown();
+			if (input.isKeyDown(Input.KEY_A) || input.isKeyDown(Input.KEY_LEFT))
+				player.moveLeft();
+			if (input.isKeyDown(Input.KEY_D) || input.isKeyDown(Input.KEY_RIGHT))
+				player.moveRight();
+			if (input.isKeyDown(Input.KEY_X) || input.isKeyDown(Input.KEY_RCONTROL))
+				player.talk();
+			if (input.isKeyDown(Input.KEY_ESCAPE))
+				nextWindow = new MenuWindow(input, player);
+	
+			Iterator<GameObject> it = player.getMap().getObjects().iterator();
 
-		Iterator<GameObject> it = player.getMap().getObjects().iterator();
-
-		while (it.hasNext()) {
-			it.next().update();
+			while (it.hasNext()) {
+				it.next().update();
+			}
+			player.update();
 		}
-		player.update();
 		Enemy opponent = player.getOpponent();
 		if(opponent != null && messageBox == null) {
 			messageBox = new MessageBox(opponent.getName(), opponent.getMessage(), 5);

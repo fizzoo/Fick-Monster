@@ -14,6 +14,8 @@
     <property name="def" value="5"/>
     <property name="int" value="0"/>
     <property name="maxhp" value="40"/>
+    <property name="mes1" value="OH GOD WHY ARE THERE SO MANY OF US HERE"/>
+    <property name="mes2" value="aourhua9orfbh"/>
     <property name="name" value="d"/>
     <property name="res" value="200"/>
     <property name="spriteOffset" value="1"/>

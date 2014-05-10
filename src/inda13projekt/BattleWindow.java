@@ -103,7 +103,7 @@ public class BattleWindow implements Window {
 			messageBox.update();
 		}
 
-		if (opponent.getHp() <= 0 || player.getHp() <= 0) {
+		if (opponent.getHp() <= 0) {
 			player.setOpponent(null);
 			player.setDir(playerOldDir);
 			opponent.setDir(opponentOldDir);
@@ -112,6 +112,9 @@ public class BattleWindow implements Window {
 			
 			if (messageBox != null && messageBox.getDone())
 				nextWindow = new OverWorldWindow(input, player);
+		}
+		if (player.getHp() <= 0) {
+			nextWindow = new GameOverWindow(input);
 		}
 	}
 
@@ -171,11 +174,12 @@ public class BattleWindow implements Window {
 
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
-			if (currentButton < 4) {
+			if (currentButton < 4 && player.getHp() > 0 && opponent.getHp() > 0) {
 				int dmg = opponent.takeDamage(player.getAttack(currentButton));
 				textTop = player.getName() + " used "
 						+ player.getAttack(currentButton).getName()
 						+ ". Hit for " + dmg + " damage!";
+				
 				int opponentAttack = rand.nextInt(4);
 				dmg = player.takeDamage(opponent.getAttack(opponentAttack));
 				textBottom = opponent.getName() + " used "

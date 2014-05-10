@@ -112,6 +112,8 @@ public abstract class GameObject {
 				.getNormalDamage() - defense) : 0; // TODO: Add armor, stats
 		hp -= (attack.getMagicDamage() - resistance) > 0 ? (attack
 				.getMagicDamage() - resistance) : 0;
+		if(hp < 0)
+			hp = 0;
 		return oldHP - hp;
 	}
 

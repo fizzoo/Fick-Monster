@@ -62,7 +62,9 @@ public class Map {
 									null)), Integer.parseInt(map
 									.getTileProperty(tileID, "res", null)),
 							Integer.parseInt(map.getTileProperty(tileID,
-									"spriteOffset", null)), this, "Hello, let's fight!", "You have defeted meeeeeeeeeeeeeeeeeeeeeeeeeeeee!"));
+									"spriteOffset", null)), this, map.getTileProperty(tileID,
+											"mes1", null), map.getTileProperty(tileID,
+													"mes2", null)));
 
 				}
 			}

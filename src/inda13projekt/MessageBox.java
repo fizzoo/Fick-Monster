@@ -13,7 +13,7 @@ import org.newdawn.slick.TrueTypeFont;
  */
 public class MessageBox{
 	private String name;
-	private String message;
+	private StringBuilder message;
 	private int i;
 	private int lines;
 	private int pos;
@@ -43,7 +43,7 @@ public class MessageBox{
 		i = 0;
 		pos = 0;
 		done = false;
-		this.message = "";
+		this.message = new StringBuilder();
 		lines = 1;
 	}
 	
@@ -59,7 +59,7 @@ public class MessageBox{
 		}
 		else if(i >= delay) {
 			i = 0;
-			message += (messageFull.substring(pos, pos + 1));
+			message.append((messageFull.substring(pos, pos + 1)));
 			pos++;
 			if(pos % lineLength == 0)
 				lines++;
@@ -75,6 +75,7 @@ public class MessageBox{
 		g.fillRect(x - width / 2, y - height / 2, width, height);
 		g.setColor(Color.black);
 		ttf20.drawString(x + 10 - width / 2, y + 10 - height / 2, name + ":", Color.black);
+		
 		for(int j = 0; j < lines; j++) {
 			if(j == lines - 1) 
 				ttf20.drawString(x + 10 - width / 2, y + 33 + (23 * j) - height / 2, message.substring(j * lineLength), Color.black);
