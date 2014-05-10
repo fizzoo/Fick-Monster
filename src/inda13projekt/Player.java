@@ -124,8 +124,6 @@ public class Player extends GameObject {
 		stream.writeInt(atk3);
 		stream.writeInt(atk4);
 
-		stream.writeBoolean(isMoving);
-
 		stream.writeObject(name);
 		stream.writeObject(map.getName());// STRINGOBJ
 
