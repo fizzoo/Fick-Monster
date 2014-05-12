@@ -1,5 +1,7 @@
 package inda13projekt;
 
+import java.util.Random;
+
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -41,6 +43,8 @@ public abstract class GameObject {
 	protected int resistance;
 
 	protected Attack[] attacks;
+
+	protected Random rand;
 
 	/**
 	 * 
@@ -89,6 +93,8 @@ public abstract class GameObject {
 		attacks[1] = new Attack(atk2, strength, intelligence);
 		attacks[2] = new Attack(atk3, strength, intelligence);
 		attacks[3] = new Attack(atk4, strength, intelligence);
+
+		rand = new Random();
 	}
 
 	/**
@@ -105,10 +111,15 @@ public abstract class GameObject {
 	 */
 	public int takeDamage(Attack attack) {
 		int oldHP = hp;
-		hp -= (attack.getNormalDamage() - defense) > 0 ? (attack
-				.getNormalDamage() - defense) : 0;
-		hp -= (attack.getMagicDamage() - resistance) > 0 ? (attack
-				.getMagicDamage() - resistance) : 0;
+
+		int dmg = attack.getNormalDamage() * (70 + rand.nextInt(50)) / 100
+				- defense;
+		hp -= (dmg > 0 ? dmg : 0);
+
+		dmg = attack.getMagicDamage() * (70 + rand.nextInt(50)) / 100
+				- resistance;
+		hp -= (dmg > 0 ? dmg : 0);
+
 		if (hp < 0)
 			hp = 0;
 		return oldHP - hp;

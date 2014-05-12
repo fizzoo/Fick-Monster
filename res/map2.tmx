@@ -4,19 +4,19 @@
   <image source="test.png" width="128" height="128"/>
   <tile id="6">
    <properties>
-    <property name="a1" value="5"/>
-    <property name="a2" value="5"/>
-    <property name="a3" value="5"/>
-    <property name="a4" value="5"/>
-    <property name="def" value="3"/>
-    <property name="int" value="4"/>
+    <property name="a1" value="0"/>
+    <property name="a2" value="2"/>
+    <property name="a3" value="4"/>
+    <property name="a4" value="6"/>
+    <property name="def" value="8"/>
+    <property name="int" value="6"/>
     <property name="maxhp" value="40"/>
-    <property name="mes1" value="Hello, let us fight to very near death!"/>
-    <property name="mes2" value="Oh my! I am almost dead, but healthy enough to run around like an idiot"/>
-    <property name="name" value="peter"/>
+    <property name="mes1" value="You will never get past me!"/>
+    <property name="mes2" value="oh noooooooooooo"/>
+    <property name="name" value="Lars"/>
     <property name="res" value="0"/>
     <property name="spriteOffset" value="1"/>
-    <property name="str" value="12"/>
+    <property name="str" value="7"/>
    </properties>
   </tile>
   <tile id="8">
@@ -26,25 +26,32 @@
     <property name="y" value="1"/>
    </properties>
   </tile>
+  <tile id="9">
+   <properties>
+    <property name="nextMap" value="map3"/>
+    <property name="x" value="10"/>
+    <property name="y" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NlYGBgHcWjGIjZkDAt7WClkx34MCMSppU7GOlgz3CwA918etlBbXvoYQc2u2hh/igemhgAdZaus9AHAAA=
+   H4sIAAAAAAAAC2NlYGBgHcVDHjNQwQw2JEwrd7Kh0bS0Ax9mRMK0cgcjHewZDnagm08vO6htDz3swGYXLcwfxUMTAwCpDFi40AcAAA==
   </data>
  </layer>
  <layer name="Collidable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NiYGBgGgSYGEArcymxi1JADzsI2UMtQGvz8dlDaztoAehhB7o9tDZ/1I7BYc9Qz4MDXeaSYw8t6kFS9QMAERaFINAHAAA=
+   H4sIAAAAAAAAC2NiYGBgIoDRASH15OBRO0a2HbQwH92e4WIHLe2htR3oYKj6A5tf0O2ilhvIBYPNjlFMewwAIddCUtAHAAA=
   </data>
  </layer>
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBQANONEwqAADF2P1l0AcAAA==
+   H4sIAAAAAAAAC2NgIAy40PAoGAWjYBSMAvIA56gdg8qO4QQA0EAcDtAHAAA=
   </data>
  </layer>
  <layer name="Enemies" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYOQA9oF2wCgYBaNgFNAIAABka60C0AcAAA==
+   H4sIAAAAAAAAC2NgGAWjYBRQA7APtANGwSgYBSMaAABtVeQW0AcAAA==
   </data>
  </layer>
 </map>

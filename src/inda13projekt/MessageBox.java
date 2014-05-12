@@ -23,7 +23,7 @@ public class MessageBox {
 	private final String messageFull;
 	private final int x = 320;
 	private final int y = 240;
-	private final int width = 256;
+	private final int width = 266;
 	private final int height = 128;
 	private final int lineLength = 20;
 

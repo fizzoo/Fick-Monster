@@ -36,8 +36,8 @@ public class GameOverWindow implements Window {
 		// TODO Auto-generated method stub
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
-			nextWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 24,
-					16, 10, 10, 0, 1, 2, 3, 0, new Map("map1")));
+			nextWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 5, 5,
+					10, 10, 0, 1, 2, 3, 0, new Map("map1")));
 		}
 	}
 

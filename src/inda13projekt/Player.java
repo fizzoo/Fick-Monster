@@ -1,6 +1,7 @@
 package inda13projekt;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A class used to represent the player. Handles the players movements.
@@ -10,8 +11,12 @@ import java.io.IOException;
  */
 public class Player extends GameObject {
 
+	private Enemy opponent;
+	private int atk1, atk2, atk3, atk4;
+	private int statpoints;
+	private ArrayList<String> defeated;
+
 	/**
-	 * 
 	 * @param gridX
 	 * @param gridY
 	 * @param name
@@ -20,6 +25,10 @@ public class Player extends GameObject {
 	 * @param intelligence
 	 * @param defense
 	 * @param resistance
+	 * @param atk1
+	 * @param atk2
+	 * @param atk3
+	 * @param atk4
 	 * @param spriteOffset
 	 * @param map
 	 */
@@ -32,10 +41,8 @@ public class Player extends GameObject {
 		this.atk2 = atk2;
 		this.atk3 = atk3;
 		this.atk4 = atk4;
+		defeated = new ArrayList<>();
 	}
-
-	private Enemy opponent;
-	private int atk1, atk2, atk3, atk4;
 
 	/**
 	 * @return map the player is in
@@ -125,6 +132,7 @@ public class Player extends GameObject {
 		stream.writeInt(intelligence);
 		stream.writeInt(defense);
 		stream.writeInt(resistance);
+
 		stream.writeInt(direction);
 		stream.writeInt(atk1);
 		stream.writeInt(atk2);
@@ -133,6 +141,7 @@ public class Player extends GameObject {
 
 		stream.writeObject(name);
 		stream.writeObject(map.getName());// STRINGOBJ
+		stream.writeObject(defeated);
 
 	}
 
@@ -174,6 +183,7 @@ public class Player extends GameObject {
 		try {
 			name = (String) stream.readObject();
 			mapname = (String) stream.readObject();
+			defeated = (ArrayList<String>) stream.readObject();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -182,5 +192,112 @@ public class Player extends GameObject {
 		this.map.setObjectPlace(gridX, gridY, gridX, gridY, this);
 		camera = this.map.getCamera();
 
+	}
+
+	/**
+	 * Recalculates attack damage based on current strength and intelligence.
+	 */
+	public void levelRecalc() {
+		attacks[0] = new Attack(atk1, strength, intelligence);
+		attacks[1] = new Attack(atk2, strength, intelligence);
+		attacks[2] = new Attack(atk3, strength, intelligence);
+		attacks[3] = new Attack(atk4, strength, intelligence);
+	}
+
+	/**
+	 * Sets an opponent status to defeated, by name
+	 * 
+	 * @param name
+	 *            name of defeated opponent
+	 */
+	public void setDefeated(String name) {
+		defeated.add(name);
+	}
+
+	/**
+	 * @param name
+	 *            name of opponent to check
+	 * @return true if opponent has already been defeated
+	 */
+	public boolean hasDefeated(String name) {
+		return defeated.contains(name);
+	}
+
+	/**
+	 * @return stat points left
+	 */
+	public int getStatpoints() {
+		return statpoints;
+	}
+
+	/**
+	 * @param statpoints
+	 *            stat points player should be given
+	 */
+	public void setStatpoints(int statpoints) {
+		this.statpoints = statpoints;
+	}
+
+	/**
+	 * Increases maxhp
+	 */
+	public void incMaxhp() {
+		maxhp += 3;
+	}
+
+	/**
+	 * Increases strength
+	 */
+	public void incStrength() {
+		strength++;
+	}
+
+	/**
+	 * Increases intelligence
+	 */
+	public void incIntelligence() {
+		intelligence++;
+	}
+
+	/**
+	 * Increases defense
+	 */
+	public void incDefense() {
+		defense++;
+	}
+
+	/**
+	 * Increases resistance
+	 */
+	public void incResistance() {
+		resistance++;
+	}
+
+	/**
+	 * @return strength of player
+	 */
+	public int getStrength() {
+		return strength;
+	}
+
+	/**
+	 * @return intelligence of player
+	 */
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	/**
+	 * @return defense of player
+	 */
+	public int getDefense() {
+		return defense;
+	}
+
+	/**
+	 * @return resistance of player
+	 */
+	public int getResistance() {
+		return resistance;
 	}
 }

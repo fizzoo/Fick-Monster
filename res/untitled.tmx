@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
-  <image source="test.png" width="96" height="96"/>
-  <tile id="6">
+  <image source="test.png" width="128" height="128"/>
+  <tile id="8">
    <properties>
     <property name="nextMap" value="Untitled2"/>
     <property name="x" value="0"/>
@@ -12,7 +12,7 @@
  </tileset>
  <layer name="Background" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NhYGBgGcUUYdZB4Iah6LaBDAdKw4US/bSME2qYPdzTzEDG/WD321Dx51B2Ky0xAPimXZLQBwAA
+   H4sIAAAAAAAAC2NlYGBgHcUUYbZB4Iah6LaBDAdKw4US/bSME2qYPdzTzEDG/WD321Dx51B2Ky0xALKzdpvQBwAA
   </data>
  </layer>
  <layer name="Collidable" width="25" height="20">
@@ -22,7 +22,7 @@
  </layer>
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAW4APtAO2AUjIJRMApGwSggEgAAVktwS9AHAAA=
+   H4sIAAAAAAAAC2NgGAW4AOdAO2AUjIJRMApGwSggEgAAcjUD2NAHAAA=
   </data>
  </layer>
  <layer name="Enemies" width="25" height="20">

@@ -34,6 +34,10 @@ public class BattleWindow implements Window {
 	private String textTop;
 	private String textBottom;
 	private boolean won;
+	private boolean playerAttacking;
+	private boolean opponentAttacking;
+	private int playerx;
+	private int opponentx;
 
 	/**
 	 * Starts a battle screen
@@ -86,6 +90,11 @@ public class BattleWindow implements Window {
 		textTop = "";
 
 		won = false;
+
+		playerx = 144;
+		opponentx = 464;
+		playerAttacking = false;
+		opponentAttacking = false;
 	}
 
 	/**
@@ -93,20 +102,48 @@ public class BattleWindow implements Window {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		handleBattleInput();
-		for (Button button : buttons) {
-			if (button.getID() == currentButton) {
-				button.setImage(true);
-			} else {
-				button.setImage(false);
+		if (playerAttacking) {
+			playerx += 8;
+			if (playerx > opponentx - 32) {
+				playerAttacking = false;
+				int dmg = opponent.takeDamage(player.getAttack(currentButton));
+				textTop = player.getName() + " used "
+						+ player.getAttack(currentButton).getName()
+						+ ". Hit for " + dmg + " damage!";
+				if (opponent.getHp() > 0) {
+					opponentAttacking = true;
+				} else {
+					textBottom = "You have won! Press X / CTRL to continue.";
+					won = true;
+				}
 			}
-		}
+		} else if (playerx > 144) {
+			playerx -= 8;
+		} else if (opponentAttacking) {
+			opponentx -= 8;
+			if (opponentx < playerx + 32) {
+				opponentAttacking = false;
+				int opponentAttack = rand.nextInt(4);
+				int dmg = player.takeDamage(opponent.getAttack(opponentAttack));
+				textBottom = opponent.getName() + " used "
+						+ opponent.getAttack(opponentAttack).getName()
+						+ ". Hit for " + dmg + " damage!";
+			}
+		} else if (opponentx < 464) {
+			opponentx += 8;
+		} else { // Freeze stuff while someones attacking
+			handleBattleInput();
+			for (Button button : buttons) {
+				if (button.getID() == currentButton) {
+					button.setImage(true);
+				} else {
+					button.setImage(false);
+				}
+			}
 
-		if (opponent.getHp() <= 0) {
-			won = true;
-		}
-		if (player.getHp() <= 0) {
-			nextWindow = new GameOverWindow(input);
+			if (player.getHp() <= 0) {
+				nextWindow = new GameOverWindow(input);
+			}
 		}
 	}
 
@@ -135,8 +172,8 @@ public class BattleWindow implements Window {
 		ttf20.drawString(50, 200, textTop, Color.black);
 		ttf20.drawString(50, 250, textBottom, Color.black);
 
-		player.render(g, 144, 120);
-		opponent.render(g, 464, 120);
+		player.render(g, playerx, 120);
+		opponent.render(g, opponentx, 120);
 
 		for (Button button : buttons) {
 			button.render(g);
@@ -152,7 +189,11 @@ public class BattleWindow implements Window {
 					|| input.isKeyPressed(Input.KEY_RCONTROL)) {
 				player.setDir(playerOldDir);
 				opponent.setDir(opponentOldDir);
-				nextWindow = new OverWorldWindow(input, player);
+
+				player.setDefeated(opponent.getName());
+				player.setStatpoints(3);
+				nextWindow = new LevelupWindow(input, player);
+
 			}
 			return;
 		}
@@ -174,21 +215,7 @@ public class BattleWindow implements Window {
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
 			if (currentButton < 4 && player.getHp() > 0 && opponent.getHp() > 0) {
-				int dmg = opponent.takeDamage(player.getAttack(currentButton));
-				textTop = player.getName() + " used "
-						+ player.getAttack(currentButton).getName()
-						+ ". Hit for " + dmg + " damage!";
-
-				if (opponent.getHp() > 0) {
-					int opponentAttack = rand.nextInt(4);
-					dmg = player.takeDamage(opponent.getAttack(opponentAttack));
-					textBottom = opponent.getName() + " used "
-							+ opponent.getAttack(opponentAttack).getName()
-							+ ". Hit for " + dmg + " damage!";
-				} else {
-					textBottom = "You have won! Press X / CTRL to continue.";
-					won = true;
-				}
+				playerAttacking = true;
 			}
 		}
 

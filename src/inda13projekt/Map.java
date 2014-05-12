@@ -63,9 +63,15 @@ public class Map {
 									.getTileProperty(tileID, "int", null)),
 							Integer.parseInt(map.getTileProperty(tileID, "def",
 									null)), Integer.parseInt(map
-									.getTileProperty(tileID, "res", null)), 0,
-							1, 2, 3, Integer.parseInt(map.getTileProperty(
-									tileID, "spriteOffset", null)), this, map
+									.getTileProperty(tileID, "res", null)),
+							Integer.parseInt(map.getTileProperty(tileID, "a1",
+									null)), Integer.parseInt(map
+									.getTileProperty(tileID, "a2", null)),
+							Integer.parseInt(map.getTileProperty(tileID, "a3",
+									null)), Integer.parseInt(map
+									.getTileProperty(tileID, "a4", null)),
+							Integer.parseInt(map.getTileProperty(tileID,
+									"spriteOffset", null)), this, map
 									.getTileProperty(tileID, "mes1", null), map
 									.getTileProperty(tileID, "mes2", null)));
 

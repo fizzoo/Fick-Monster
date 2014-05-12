@@ -1,6 +1,5 @@
 package inda13projekt;
 
-import java.util.Random;
 
 /**
  * 
@@ -8,7 +7,6 @@ import java.util.Random;
  * 
  */
 public class Enemy extends GameObject {
-	private Random rand;
 	private int timeToAction;
 	private String normalMessage;
 	private String defeatMessage;
@@ -33,7 +31,6 @@ public class Enemy extends GameObject {
 
 		this.normalMessage = normalMessage;
 		this.defeatMessage = defeatMessage;
-		rand = new Random();
 		timeToAction = 0;
 	}
 

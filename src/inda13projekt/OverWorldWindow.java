@@ -77,6 +77,8 @@ public class OverWorldWindow implements Window {
 
 		if (opponent != null) {
 			if (messageBox == null) {
+				if (player.hasDefeated(opponent.getName()))
+					opponent.setHp(0);
 				messageBox = new MessageBox(opponent.getName(),
 						opponent.getMessage(), 5);
 			} else if (!messageBox.getDone()) {
