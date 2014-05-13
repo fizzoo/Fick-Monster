@@ -79,8 +79,8 @@ public class MenuWindow implements Window {
 		for (Button button : buttons) {
 			button.render(g);
 		}
-		ttf20.drawString(80, 430,
-				"WASD/Arrows for movement, X/RCTRL for action");
+		ttf20.drawString(60, 430,
+				"WASD/Arrows, X/RCTRL: action, F5: Save, F9: Load");
 	}
 
 	/**
