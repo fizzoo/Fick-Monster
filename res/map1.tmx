@@ -7,13 +7,13 @@
     <property name="a1" value="5"/>
     <property name="a2" value="5"/>
     <property name="a3" value="5"/>
-    <property name="a4" value="5"/>
+    <property name="a4" value="6"/>
     <property name="def" value="3"/>
     <property name="int" value="4"/>
     <property name="maxhp" value="40"/>
     <property name="mes1" value="Hello, let us fight to very near death!"/>
     <property name="mes2" value="Oh my! I am almost dead, but healthy enough to run around like an idiot"/>
-    <property name="name" value="peter"/>
+    <property name="name" value="Peter"/>
     <property name="res" value="0"/>
     <property name="spriteOffset" value="1"/>
     <property name="str" value="12"/>

@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
-  <image source="tilemap.png" width="128" height="128"/>
+  <image source="tilemap.png" width="128" height="192"/>
   <tile id="5">
    <properties>
     <property name="a1" value="0"/>
-    <property name="a2" value="2"/>
-    <property name="a3" value="4"/>
-    <property name="a4" value="6"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
     <property name="def" value="8"/>
-    <property name="int" value="6"/>
-    <property name="maxhp" value="40"/>
-    <property name="mes1" value="You will never get past me!"/>
-    <property name="mes2" value="oh noooooooooooo"/>
-    <property name="name" value="Lars"/>
-    <property name="res" value="0"/>
-    <property name="spriteOffset" value="1"/>
-    <property name="str" value="7"/>
+    <property name="int" value="7"/>
+    <property name="maxhp" value="53"/>
+    <property name="mes1" value="..."/>
+    <property name="mes2" value="Bye..."/>
+    <property name="name" value="Bengt"/>
+    <property name="res" value="10"/>
+    <property name="spriteOffset" value="4"/>
+    <property name="str" value="9"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
     <property name="nextMap" value="map2"/>
-    <property name="x" value="10"/>
-    <property name="y" value="1"/>
+    <property name="x" value="19"/>
+    <property name="y" value="13"/>
    </properties>
   </tile>
   <tile id="9">
@@ -39,8 +39,15 @@
     <property name="mes2" value=":("/>
     <property name="name" value="Göran"/>
     <property name="res" value="7"/>
-    <property name="spriteOffset" value="1"/>
+    <property name="spriteOffset" value="4"/>
     <property name="str" value="3"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="nextMap" value="map4"/>
+    <property name="x" value="1"/>
+    <property name="y" value="17"/>
    </properties>
   </tile>
  </tileset>
@@ -51,12 +58,12 @@
  </layer>
  <layer name="Collidable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXMBPjkmjMKcAN8YYVLjpLwpVbcDKY4HkxuoTYg1W8DERbDOfypBcjJ56OAfAAA2GP8ftAHAAA=
+   H4sIAAAAAAAAC2NmYGBgpgOmJaDUfHT92Mwjxg5qu4MWgF7xQcgOfPK45JjR2KT4gxw/Y7OD2mFHSXwQq2+wxDmp5pFiB7XsJsUflMQbvfL6QNtBTj5HVzPU0i4+O2iNAcprw7rQBwAA
   </data>
  </layer>
  <layer name="Teleportable" width="25" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBUAcARPTJAtAHAAA=
+   H4sIAAAAAAAAC2NgGB6Ac9SOUTAKRsEoAAPeYWLHKCANAAAUH+vT0AcAAA==
   </data>
  </layer>
  <layer name="Enemies" width="25" height="20">

@@ -42,7 +42,7 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		if (player.numDefeated() >= 7) {
+		if (player.numDefeated() >= 6) {
 			nextWindow = new WinWindow(input);
 		}
 
