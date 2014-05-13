@@ -1,6 +1,8 @@
 package inda13projekt;
 
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -11,6 +13,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
+import org.newdawn.slick.particles.ConfigurableEmitter;
+import org.newdawn.slick.particles.ParticleIO;
+import org.newdawn.slick.particles.ParticleSystem;
 
 /**
  * Manages input, logic and drawing whilst in the battle screen.
@@ -38,6 +43,8 @@ public class BattleWindow implements Window {
 	private boolean opponentAttacking;
 	private int playerx;
 	private int opponentx;
+	private ParticleSystem particles;
+	private ConfigurableEmitter emitter;
 
 	/**
 	 * Starts a battle screen
@@ -95,6 +102,14 @@ public class BattleWindow implements Window {
 		opponentx = 464;
 		playerAttacking = false;
 		opponentAttacking = false;
+
+		try {
+			particles = new ParticleSystem(new Image("././res/particle.png"),
+					5000);
+			emitter = ParticleIO.loadEmitter(new File("././res/particle.xml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -110,6 +125,11 @@ public class BattleWindow implements Window {
 				textTop = player.getName() + " used "
 						+ player.getAttack(currentButton).getName()
 						+ ". Hit for " + dmg + " damage!";
+
+				emitter.resetState();
+				emitter.setPosition(opponentx + 16, 136);
+				particles.addEmitter(emitter);
+
 				if (opponent.getHp() > 0) {
 					opponentAttacking = true;
 				} else {
@@ -128,6 +148,10 @@ public class BattleWindow implements Window {
 				textBottom = opponent.getName() + " used "
 						+ opponent.getAttack(opponentAttack).getName()
 						+ ". Hit for " + dmg + " damage!";
+
+				emitter.resetState();
+				emitter.setPosition(playerx + 16, 136);
+				particles.addEmitter(emitter);
 			}
 		} else if (opponentx < 464) {
 			opponentx += 8;
@@ -146,6 +170,7 @@ public class BattleWindow implements Window {
 			}
 		}
 		this.input.clearKeyPressedRecord();
+		particles.update(delta);
 	}
 
 	/**
@@ -179,6 +204,8 @@ public class BattleWindow implements Window {
 		for (Button button : buttons) {
 			button.render(g);
 		}
+
+		particles.render();
 	}
 
 	/**

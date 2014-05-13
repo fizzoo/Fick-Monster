@@ -222,7 +222,7 @@ public class Player extends GameObject {
 	public boolean hasDefeated(String name) {
 		return defeated.contains(name);
 	}
-	
+
 	/**
 	 * 
 	 * @return the number of opponents defeated
