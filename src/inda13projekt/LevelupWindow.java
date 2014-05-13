@@ -95,8 +95,8 @@ public class LevelupWindow implements Window {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		g.drawImage(new Image("././res/triangel.png"),
-				40 + 120 * currentSelection, 250);
+		g.drawImage(new Image("res/triangel.png"), 40 + 120 * currentSelection,
+				250);
 
 		ttf20.drawString(230, 200, "Statpoints left: " + player.getStatpoints());
 

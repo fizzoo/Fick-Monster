@@ -35,7 +35,7 @@ public class Map {
 		objects = new ArrayList<>();
 
 		try {
-			map = new TiledMap("././res/" + name + ".tmx");
+			map = new TiledMap("res/" + name + ".tmx");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

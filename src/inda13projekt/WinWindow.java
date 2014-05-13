@@ -17,21 +17,21 @@ public class WinWindow implements Window {
 	Input input;
 	Window nextWindow;
 	Image background;
-	
+
 	private final TrueTypeFont ttf42 = new TrueTypeFont(new Font("Verdana",
 			Font.PLAIN, 42), true);
-	
+
 	/**
 	 *
 	 */
-	public WinWindow(Input input)throws SlickException {
+	public WinWindow(Input input) throws SlickException {
 		this.input = input;
 		this.input.clearKeyPressedRecord();
-		background = new Image("././res/very_win.bmp");
+		background = new Image("res/very_win.bmp");
 		nextWindow = null;
 		this.input.clearKeyPressedRecord();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -59,7 +59,7 @@ public class WinWindow implements Window {
 		ttf42.drawString(60, 70, "such win", Color.red);
 		ttf42.drawString(370, 170, "very skill", Color.yellow);
 		ttf42.drawString(100, 250, "much play", Color.blue);
-		
+
 		ttf42.drawString(5, 420, "Press X or CTRL to start over!", Color.black);
 	}
 

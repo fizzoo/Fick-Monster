@@ -71,24 +71,24 @@ public class BattleWindow implements Window {
 
 		buttons = new ArrayList<Button>();
 		buttons.add(new Button(70, 400, 128, 64, player.getAttack(0).getName(),
-				0, new Image("././res/battle_button_hover.png"), new Image(
-						"././res/battle_button_normal.png")));
+				0, new Image("res/battle_button_hover.png"), new Image(
+						"res/battle_button_normal.png")));
 		buttons.add(new Button(200, 400, 128, 64,
 				player.getAttack(1).getName(), 1, new Image(
-						"././res/battle_button_hover.png"), new Image(
-						"././res/battle_button_normal.png")));
+						"res/battle_button_hover.png"), new Image(
+						"res/battle_button_normal.png")));
 		buttons.add(new Button(330, 400, 128, 64,
 				player.getAttack(2).getName(), 2, new Image(
-						"././res/battle_button_hover.png"), new Image(
-						"././res/battle_button_normal.png")));
+						"res/battle_button_hover.png"), new Image(
+						"res/battle_button_normal.png")));
 		buttons.add(new Button(460, 400, 128, 64,
 				player.getAttack(3).getName(), 3, new Image(
-						"././res/battle_button_hover.png"), new Image(
-						"././res/battle_button_normal.png")));
+						"res/battle_button_hover.png"), new Image(
+						"res/battle_button_normal.png")));
 
 		// buttons.add(new Button(520, 400, 128, 64, "Run", 4, new Image(
-		// "././res/battle_button_hover.png"), new Image(
-		// "././res/battle_button_normal.png")));
+		// "res/battle_button_hover.png"), new Image(
+		// "res/battle_button_normal.png")));
 
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
@@ -104,9 +104,8 @@ public class BattleWindow implements Window {
 		opponentAttacking = false;
 
 		try {
-			particles = new ParticleSystem(new Image("././res/particle.png"),
-					5000);
-			emitter = ParticleIO.loadEmitter(new File("././res/particle.xml"));
+			particles = new ParticleSystem(new Image("res/particle.png"), 5000);
+			emitter = ParticleIO.loadEmitter(new File("res/particle.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

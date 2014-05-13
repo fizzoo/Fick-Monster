@@ -130,7 +130,7 @@ public class OverWorldWindow implements Window {
 	 */
 	public void save() {
 		try (ObjectOutputStream out = new ObjectOutputStream(
-				new FileOutputStream("././res/save"))) {
+				new FileOutputStream("res/save"))) {
 			player.save(out);
 		} catch (IOException i) {
 			i.printStackTrace();
@@ -142,7 +142,7 @@ public class OverWorldWindow implements Window {
 	 */
 	public void load() {
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(
-				"././res/save"))) {
+				"res/save"))) {
 			player.load(in);
 		} catch (IOException i) {
 			i.printStackTrace();

@@ -71,7 +71,7 @@ public abstract class GameObject {
 		camera = this.map.getCamera();
 
 		try {
-			this.spriteSheet = new SpriteSheet("././res/Gubbe.png", 32, 32);
+			this.spriteSheet = new SpriteSheet("res/Gubbe.png", 32, 32);
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

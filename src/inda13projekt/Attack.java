@@ -24,7 +24,7 @@ public class Attack {
 	 *            intelligence of attacker
 	 */
 	public Attack(int attackID, int strength, int intelligence) {
-		try (Scanner scanner = new Scanner(new File("././res/attacks.txt"))) {
+		try (Scanner scanner = new Scanner(new File("res/attacks.txt"))) {
 
 			scanner.useDelimiter("\\n");
 			for (int i = 0; i < attackID; i++) {
