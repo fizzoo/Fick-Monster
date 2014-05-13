@@ -145,6 +145,7 @@ public class BattleWindow implements Window {
 				nextWindow = new GameOverWindow(input);
 			}
 		}
+		this.input.clearKeyPressedRecord();
 	}
 
 	/**

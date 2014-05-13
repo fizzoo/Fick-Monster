@@ -38,6 +38,9 @@ public class LevelupWindow implements Window {
 		currentSelection = 0;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		if (player.getStatpoints() <= 0) {
@@ -87,6 +90,9 @@ public class LevelupWindow implements Window {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		g.drawImage(new Image("././res/triangel.png"),
@@ -107,6 +113,9 @@ public class LevelupWindow implements Window {
 		ttf20.drawString(540, 380, "" + player.getResistance());
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public Window getNextWindow() {
 		return nextWindow;
