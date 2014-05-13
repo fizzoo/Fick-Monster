@@ -125,9 +125,11 @@ public class BattleWindow implements Window {
 						+ player.getAttack(currentButton).getName()
 						+ ". Hit for " + dmg + " damage!";
 
-				emitter.resetState();
-				emitter.setPosition(opponentx + 16, 136);
-				particles.addEmitter(emitter);
+				if (dmg > 0) {
+					emitter.resetState();
+					emitter.setPosition(opponentx + 16, 136);
+					particles.addEmitter(emitter);
+				}
 
 				if (opponent.getHp() > 0) {
 					opponentAttacking = true;
@@ -148,9 +150,11 @@ public class BattleWindow implements Window {
 						+ opponent.getAttack(opponentAttack).getName()
 						+ ". Hit for " + dmg + " damage!";
 
-				emitter.resetState();
-				emitter.setPosition(playerx + 16, 136);
-				particles.addEmitter(emitter);
+				if (dmg > 0) {
+					emitter.resetState();
+					emitter.setPosition(playerx + 16, 136);
+					particles.addEmitter(emitter);
+				}
 			}
 		} else if (opponentx < 464) {
 			opponentx += 8;
