@@ -42,10 +42,10 @@ public class OverWorldWindow implements Window {
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		if(player.numDefeated() >= 1) {
+		if (player.numDefeated() >= 7) {
 			nextWindow = new WinWindow(input);
 		}
-		
+
 		if (player.getOpponent() == null) {
 			if (input.isKeyDown(Input.KEY_W) || input.isKeyDown(Input.KEY_UP))
 				player.moveUp();

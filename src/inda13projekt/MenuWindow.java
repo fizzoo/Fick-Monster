@@ -1,5 +1,6 @@
 package inda13projekt;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
@@ -8,6 +9,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 
 /**
  * The menu, the first window the user is presented. Here the user can press
@@ -23,6 +25,8 @@ public class MenuWindow implements Window {
 	private int currentButton;
 	private Window nextWindow;
 	private Player player;
+	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 20), true);
 
 	final String name = "Menu";
 
@@ -71,11 +75,12 @@ public class MenuWindow implements Window {
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
 		background.draw(0, 0);
 		for (Button button : buttons) {
 			button.render(g);
 		}
+		ttf20.drawString(80, 430,
+				"WASD/Arrows for movement, X/RCTRL for action");
 	}
 
 	/**
@@ -114,7 +119,6 @@ public class MenuWindow implements Window {
 	 */
 	@Override
 	public Window getNextWindow() {
-		// TODO Auto-generated method stub
 		return nextWindow;
 	}
 }
