@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="tilemap.png" width="128" height="128"/>
+  <tile id="6">
+   <properties>
+    <property name="a1" value="5"/>
+    <property name="a2" value="5"/>
+    <property name="a3" value="5"/>
+    <property name="a4" value="6"/>
+    <property name="def" value="3"/>
+    <property name="int" value="4"/>
+    <property name="maxhp" value="40"/>
+    <property name="mes1" value="Hello, let us fight to very near death!"/>
+    <property name="mes2" value="Oh my! I am almost dead, but healthy enough to run around like an idiot"/>
+    <property name="name" value="Peter"/>
+    <property name="res" value="0"/>
+    <property name="spriteOffset" value="1"/>
+    <property name="str" value="12"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="nextMap" value="map2"/>
+    <property name="x" value="10"/>
+    <property name="y" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NlYGBgHcWjGIjZkDAt7WClkx34MCMSppU7GOlgz3CwA918etlBbXvoYQc2u2hh/igemhgAdZaus9AHAAA=
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NiYGBgGgSYGEArcymxi1JADzsI2UMtQGvz8dlDaztoAehhB7o9tDZ/1I7BYc9Qz4MDXeaSYw8t6kFS9QMAERaFINAHAAA=
+  </data>
+ </layer>
+ <layer name="Teleportable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglEwCkbBQANONEwqAADF2P1l0AcAAA==
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYOQA9oF2wCgYBaNgFNAIAABka60C0AcAAA==
+  </data>
+ </layer>
+</map>

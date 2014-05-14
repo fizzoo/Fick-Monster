@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="tilemap.png" width="128" height="192"/>
+  <tile id="6">
+   <properties>
+    <property name="a1" value="0"/>
+    <property name="a2" value="2"/>
+    <property name="a3" value="4"/>
+    <property name="a4" value="6"/>
+    <property name="def" value="8"/>
+    <property name="int" value="6"/>
+    <property name="maxhp" value="40"/>
+    <property name="mes1" value="You will never get past me!"/>
+    <property name="mes2" value="oh noooooooooooo"/>
+    <property name="name" value="Lars"/>
+    <property name="res" value="0"/>
+    <property name="spriteOffset" value="3"/>
+    <property name="str" value="7"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="nextMap" value="map1"/>
+    <property name="x" value="7"/>
+    <property name="y" value="6"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="nextMap" value="map3"/>
+    <property name="x" value="10"/>
+    <property name="y" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NlYGBgHcVDHjNQwQw2JEwrd7Kh0bS0Ax9mRMK0cgcjHewZDnagm08vO6htDz3swGYXLcwfxUMTAwCpDFi40AcAAA==
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NiYGBgIoDRASH15OBRO0a2HbQwH92e4WIHLe2htR3oYKj6A5tf0O2ilhvIBYPNjlFMewwAIddCUtAHAAA=
+  </data>
+ </layer>
+ <layer name="Teleportable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgIAx40fAoGAWjYBSMAvIA56gdg8qO4QQAGE4Lf9AHAAA=
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBRQA7APtANGwSgYBSMaAABtVeQW0AcAAA==
+  </data>
+ </layer>
+</map>

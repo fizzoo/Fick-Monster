@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="tilemap.png" width="128" height="192"/>
+  <tile id="5">
+   <properties>
+    <property name="a1" value="0"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
+    <property name="def" value="8"/>
+    <property name="int" value="7"/>
+    <property name="maxhp" value="53"/>
+    <property name="mes1" value="..."/>
+    <property name="mes2" value="Bye..."/>
+    <property name="name" value="Bengt"/>
+    <property name="res" value="10"/>
+    <property name="spriteOffset" value="2"/>
+    <property name="str" value="9"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="nextMap" value="map3"/>
+    <property name="x" value="23"/>
+    <property name="y" value="14"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="a1" value="0"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
+    <property name="def" value="8"/>
+    <property name="int" value="14"/>
+    <property name="maxhp" value="53"/>
+    <property name="mes1" value="..."/>
+    <property name="mes2" value="Bye..."/>
+    <property name="name" value="Henrik"/>
+    <property name="res" value="10"/>
+    <property name="spriteOffset" value="3"/>
+    <property name="str" value="9"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="a1" value="0"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
+    <property name="def" value="8"/>
+    <property name="int" value="7"/>
+    <property name="maxhp" value="53"/>
+    <property name="mes1" value="..."/>
+    <property name="mes2" value="Bye..."/>
+    <property name="name" value="Bengt"/>
+    <property name="res" value="10"/>
+    <property name="spriteOffset" value="2"/>
+    <property name="str" value="14"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="nextMap" value="map5"/>
+    <property name="x" value="1"/>
+    <property name="y" value="10"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxNkYGAQHMWjeBSP4lE8ikfxkMYAns8gGdAHAAA=
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Qyw0AMAhCWcL9V+0CVsHPpamJN+EJBsAeXWa2/acYGXuiKyWf4hNluflWcym6z/B1cG42cnhT9WcYqnemB3HD+LL/qxxFE02nf5YRMRVG9Yeu70Q/E3sAw1WwatAHAAA=
+  </data>
+ </layer>
+ <layer name="Teleportable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglFAT8A5asegsYOXxubTyw4QAABKPL500AcAAA==
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYOAA10A7YBSMAjIB90A7YBSMAjQAAB6zcVLQBwAA
+  </data>
+ </layer>
+</map>

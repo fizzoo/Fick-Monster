@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="test.png" width="128" height="128"/>
+  <tile id="0">
+   <properties>
+    <property name="nextMap" value="untitled"/>
+    <property name="x" value="2"/>
+    <property name="y" value="2"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="a1" value="2"/>
+    <property name="a2" value="5"/>
+    <property name="a3" value="6"/>
+    <property name="a4" value="7"/>
+    <property name="def" value="5"/>
+    <property name="int" value="0"/>
+    <property name="maxhp" value="40"/>
+    <property name="mes1" value="OH GOD WHY ARE THERE SO MANY OF US HERE"/>
+    <property name="mes2" value="aourhua9orfbh"/>
+    <property name="name" value="d"/>
+    <property name="res" value="200"/>
+    <property name="spriteOffset" value="1"/>
+    <property name="str" value="12"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NlYGBgHcWjeBSP4lE8ikfxkMYAwwdOaNAHAAA=
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjAALYKMD0cBspaslx/3DwB73iYxSMglEw+AAAw/NR+dAHAAA=
+  </data>
+ </layer>
+ <layer name="Teleportable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMglFALGCEYlqbT2t7RsHwAwDBrG5E0AcAAA==
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC8WRUQ7AIAhDm93/0Ps1BJSWupkYP4RHWwDuPOSd9lc85wygZt/0oujLtKiML3T+PWNSp/pg+jI/aDIYb13mdDeKd2eebH/8y2qxvI4MHYxT7uoMh0dXThWzYncy2GmLx6n/xt4zTy/C9vaw0AcAAA==
+  </data>
+ </layer>
+</map>

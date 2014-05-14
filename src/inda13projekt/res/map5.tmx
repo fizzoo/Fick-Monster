@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="25" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test" tilewidth="32" tileheight="32">
+  <image source="tilemap.png" width="128" height="192"/>
+  <tile id="5">
+   <properties>
+    <property name="a1" value="8"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
+    <property name="def" value="12"/>
+    <property name="int" value="12"/>
+    <property name="maxhp" value="80"/>
+    <property name="mes1" value="I AM THE BEST!!!!!"/>
+    <property name="mes2" value="I AM DEFEATED"/>
+    <property name="name" value="Jan"/>
+    <property name="res" value="18"/>
+    <property name="spriteOffset" value="5"/>
+    <property name="str" value="12"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="nextMap" value="map4"/>
+    <property name="x" value="23"/>
+    <property name="y" value="18"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="a1" value="8"/>
+    <property name="a2" value="1"/>
+    <property name="a3" value="2"/>
+    <property name="a4" value="3"/>
+    <property name="def" value="12"/>
+    <property name="int" value="12"/>
+    <property name="maxhp" value="80"/>
+    <property name="mes1" value="I AM THE BEST!!!!!"/>
+    <property name="mes2" value="I AM DEFEATED"/>
+    <property name="name" value="Jan"/>
+    <property name="res" value="18"/>
+    <property name="spriteOffset" value="5"/>
+    <property name="str" value="12"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="hej" value=""/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="nextMap" value="map5"/>
+    <property name="x" value="1"/>
+    <property name="y" value="10"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxNkYGAQHMVDDosBsTgQSwwCt2DDwqN4FA9RPNB5ZxSPYnIxABIRlSXQBwAA
+  </data>
+ </layer>
+ <layer name="Collidable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC91VWw6AIAzjBGjAgPc/qeNjyYJ7FBJ/bNIfqOtcZk3pjUw8iKdyh2j5zKtRiJV4AR6als+8Go3YiXfQr6VFPNB+LbDv7O1BzhelfF9EXwN2hXXh+aiuNYsW9BARnTH7fI3yI4/VnUQzZmDs/O5OVcBH1t/Zq3n/rW+KtbuQeYHud5THaN57Oi8rs3Nn1dF0XlZG/rJvLesRIP4r/4lVIH0/qWDQX9AHAAA=
+  </data>
+ </layer>
+ <layer name="Teleportable" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBTgApyjdoyCUTAKhggAAGeP6+LQBwAA
+  </data>
+ </layer>
+ <layer name="Enemies" width="25" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBQMR8A10A4YBaNgFNAVAADr/ZN70AcAAA==
+  </data>
+ </layer>
+</map>
