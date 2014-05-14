@@ -8,9 +8,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
- * A button used to navigate the menu.
+ * A button used to navigate the menus
  * 
- * @author Alex
  * 
  */
 public class Button {
@@ -27,9 +26,17 @@ public class Button {
 	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
 			Font.PLAIN, 20), true);
 
-	/**
-  * 
-  */
+/**
+ * 
+ * @param x	the x position of the button
+ * @param y	the y position of the button
+ * @param width	the width of the button
+ * @param height	the height of the button
+ * @param text	the text displayed in the button
+ * @param buttonID	the buttons id
+ * @param hover	the image used when the button is selected
+ * @param normal	the image used if the button is not selected
+ */
 	public Button(final int x, final int y, final int width, final int height,
 			final String text, final int buttonID, Image hover, Image normal) {
 		this.hover = hover;
@@ -52,9 +59,11 @@ public class Button {
 		ttf20.drawString(x - 45, y - 10, text, Color.black);
 	}
 
+
 	/**
-  * 
-  */
+	 * will set the buttons image either to the hovered or the normal version
+	 * @param hovered	true if the button is selected
+	 */
 	public void setImage(final boolean hovered) {
 		if (hovered) {
 			sprite = hover;

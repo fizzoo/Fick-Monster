@@ -10,7 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
- * 
+ * this window is used to display to the user that it has lost the game and asks it if it wants to try again
  */
 public class GameOverWindow implements Window {
 	private Input input;
@@ -20,7 +20,8 @@ public class GameOverWindow implements Window {
 			Font.PLAIN, 32), true);
 
 	/**
-	 * 
+	 * inits the window
+	 * @param input is required to handle the input
 	 */
 	public GameOverWindow(Input input) {
 		this.input = input;
@@ -36,7 +37,7 @@ public class GameOverWindow implements Window {
 		// TODO Auto-generated method stub
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
-			nextWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 5, 5,
+			nextWindow = new MenuWindow(input, new Player(7, 6, "You", 80, 5, 5,
 					10, 10, 0, 1, 2, 3, 0, new Map("map1")));
 		}
 	}

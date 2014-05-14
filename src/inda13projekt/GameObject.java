@@ -12,7 +12,6 @@ import org.newdawn.slick.SpriteSheet;
  * update and render methods in Game.java. This way all those objects can be
  * easily stored in one list.
  * 
- * @author Alex
  * 
  */
 public abstract class GameObject {
@@ -48,15 +47,20 @@ public abstract class GameObject {
 
 	/**
 	 * 
-	 * @param gridX
-	 * @param gridY
-	 * @param velX
-	 *            the velocity of the object when moving on the x-axis (in
-	 *            pixels)
-	 * @param velY
-	 *            the velocity of the object when moving on the y-axis (in
-	 *            pixels)
-	 * @param map
+	 * @param gridX	the x position of the object in the grid
+	 * @param gridY the y position of the object in the grid
+ 	 * @param name the name of the object 
+ 	 * @param maxhp the maximum hitpoints of the object
+ 	 * @param strength the strength stat of the object 
+ 	 * @param intelligence the intelligence stat of the object
+ 	 * @param defense the defense stat of the object
+ 	 * @param resistance the resistance (magical) of the object
+ 	 * @param atk1 the attacks the object can use
+ 	 * @param atk2 the attacks the object can use
+ 	 * @param atk3 the attacks the object can use
+ 	 * @param atk4 the attacks the object can use
+ 	 * @param spriteOffset	the objects all use the same spritesheet, so this indicates the offset in that spiresheet so that it's possible to differentiate between objects
+ 	 * @param map	the map the object is located in
 	 */
 	public GameObject(int gridX, int gridY, String name, int maxhp,
 			int strength, int intelligence, int defense, int resistance,

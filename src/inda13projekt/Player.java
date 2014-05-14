@@ -6,7 +6,6 @@ import java.util.ArrayList;
 /**
  * A class used to represent the player. Handles the players movements.
  * 
- * @author Alex
  * 
  */
 public class Player extends GameObject {
@@ -17,20 +16,7 @@ public class Player extends GameObject {
 	private ArrayList<String> defeated;
 
 	/**
-	 * @param gridX
-	 * @param gridY
-	 * @param name
-	 * @param maxhp
-	 * @param strength
-	 * @param intelligence
-	 * @param defense
-	 * @param resistance
-	 * @param atk1
-	 * @param atk2
-	 * @param atk3
-	 * @param atk4
-	 * @param spriteOffset
-	 * @param map
+	 * 
 	 */
 	public Player(int gridX, int gridY, String name, int maxhp, int strength,
 			int intelligence, int defense, int resistance, int atk1, int atk2,
@@ -71,7 +57,7 @@ public class Player extends GameObject {
 	}
 
 	/**
-	 * 
+	 * checks if there is a npc in front of the player and tries to talk to it
 	 */
 	public void talk() {
 		int xOffset = getDirToX(direction);
@@ -101,7 +87,7 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @return
+	 * @return the players current opponent (can be null)
 	 */
 	public Enemy getOpponent() {
 		return opponent;
@@ -109,7 +95,7 @@ public class Player extends GameObject {
 
 	/**
 	 * 
-	 * @param opponent
+	 * @param opponent the players new opponent (can be null)
 	 */
 	public void setOpponent(Enemy opponent) {
 		this.opponent = opponent;
@@ -119,7 +105,7 @@ public class Player extends GameObject {
 	 * Writes player state to file
 	 * 
 	 * @param stream
-	 *            objectstream to use
+	 *            objectstream needed to save the players state
 	 * @throws IOException
 	 */
 	public void save(java.io.ObjectOutputStream stream) throws IOException {
@@ -149,7 +135,7 @@ public class Player extends GameObject {
 	 * Reads player state from file
 	 * 
 	 * @param stream
-	 *            objectstream to use
+	 *            objectstream used to load the players state
 	 * @throws IOException
 	 */
 	public void load(java.io.ObjectInputStream stream) throws IOException {

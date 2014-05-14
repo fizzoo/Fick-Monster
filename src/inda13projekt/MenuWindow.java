@@ -15,7 +15,6 @@ import org.newdawn.slick.TrueTypeFont;
  * The menu, the first window the user is presented. Here the user can press
  * buttons which will change the game state
  * 
- * @author Alex
  * 
  */
 public class MenuWindow implements Window {
@@ -30,11 +29,12 @@ public class MenuWindow implements Window {
 
 	final String name = "Menu";
 
+
 	/**
-	 * inits the window and it's buttons as well as the windows background image
-	 * 
+	 * inits the window
+	 * @param input the input handler
+	 * @param player the player
 	 * @throws SlickException
-	 * 
 	 */
 	public MenuWindow(Input input, Player player) throws SlickException {
 		this.player = player;

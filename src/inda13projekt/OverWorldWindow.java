@@ -14,8 +14,7 @@ import org.newdawn.slick.SlickException;
 
 /**
  * Manages input, logic and drawing whilst in the overworld.
- * 
- * @author Fizzo
+ * The player may only save and load the game whilst in the overworld
  * 
  */
 public class OverWorldWindow implements Window {
@@ -130,7 +129,7 @@ public class OverWorldWindow implements Window {
 	 */
 	public void save() {
 		try (ObjectOutputStream out = new ObjectOutputStream(
-				new FileOutputStream("res/save"))) {
+				new FileOutputStream("././save"))) {
 			player.save(out);
 		} catch (IOException i) {
 			i.printStackTrace();
@@ -142,7 +141,7 @@ public class OverWorldWindow implements Window {
 	 */
 	public void load() {
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(
-				"res/save"))) {
+				"././save"))) {
 			player.load(in);
 		} catch (IOException i) {
 			i.printStackTrace();

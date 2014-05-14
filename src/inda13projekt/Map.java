@@ -8,7 +8,6 @@ import org.newdawn.slick.tiled.TiledMap;
 /**
  * Class managing a map and its properties.
  * 
- * @author Fizzo
  * 
  */
 public class Map {
@@ -55,6 +54,7 @@ public class Map {
 			for (int y = 0; y < height; y++) {
 				int tileID = map.getTileId(x, y, enemyLayer);
 				if (tileID != 0) {
+					//this looks horrible but allows us to dynamicly create objects using TILED
 					objects.add(new Enemy(x, y, map.getTileProperty(tileID,
 							"name", null), Integer.parseInt(map
 							.getTileProperty(tileID, "maxhp", null)),

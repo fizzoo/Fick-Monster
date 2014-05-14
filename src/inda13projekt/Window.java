@@ -26,7 +26,7 @@ public interface Window {
 	public void render(GameContainer gc, Graphics g) throws SlickException;
 
 	/**
-	 * Handles window transition
+	 * Handles window transition.
 	 * 
 	 * @return
 	 */

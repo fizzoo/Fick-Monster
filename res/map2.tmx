@@ -12,7 +12,7 @@
     <property name="int" value="6"/>
     <property name="maxhp" value="40"/>
     <property name="mes1" value="You will never get past me!"/>
-    <property name="mes2" value="oh noooooooooooo"/>
+    <property name="mes2" value="The path is still blocked!"/>
     <property name="name" value="Lars"/>
     <property name="res" value="0"/>
     <property name="spriteOffset" value="3"/>

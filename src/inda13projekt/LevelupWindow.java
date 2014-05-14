@@ -10,9 +10,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
- * Class managing leveling up of the player.
+ * Window managing leveling up of the player.
  * 
- * @author Fizzo
  */
 public class LevelupWindow implements Window {
 	private Input input;
@@ -27,6 +26,7 @@ public class LevelupWindow implements Window {
 	 * Creates a new leveling window
 	 * 
 	 * @param input
+	 * 			  the input handler
 	 * @param player
 	 *            current player
 	 */
@@ -39,7 +39,7 @@ public class LevelupWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * uppdates the position of the selection triangle and handles input
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
@@ -91,7 +91,7 @@ public class LevelupWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * renders the text and selection triangle as well as the players current stats
 	 */
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
@@ -114,7 +114,7 @@ public class LevelupWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * handles window transition. 
 	 */
 	@Override
 	public Window getNextWindow() {

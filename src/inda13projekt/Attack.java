@@ -1,6 +1,5 @@
 package inda13projekt;
 
-import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -19,13 +18,12 @@ public class Attack {
 	 * @param attackID
 	 *            Number of the attack, as row in attacks.txt
 	 * @param strength
-	 *            strength of attacker
+	 *            strength of attacker, used to calculate damage
 	 * @param intelligence
-	 *            intelligence of attacker
+	 *            intelligence of attacker, used to calculate damage
 	 */
 	public Attack(int attackID, int strength, int intelligence) {
-		try (Scanner scanner = new Scanner(new File("res/attacks.txt"))) {
-
+		try (Scanner scanner = new Scanner((this.getClass().getResourceAsStream("res/attacks.txt")))){
 			scanner.useDelimiter("\\n");
 			for (int i = 0; i < attackID; i++) {
 				scanner.next();
@@ -40,10 +38,9 @@ public class Attack {
 
 			normalDamage = normal + strScale * strength / 100;
 			magicDamage = magic + intScale * intelligence / 100;
-
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 	}
 
 	/**

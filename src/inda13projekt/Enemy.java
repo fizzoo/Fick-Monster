@@ -2,8 +2,7 @@ package inda13projekt;
 
 
 /**
- * 
- * @author Alex
+ * the enemys are npc which the player can fight 
  * 
  */
 public class Enemy extends GameObject {
@@ -11,16 +10,11 @@ public class Enemy extends GameObject {
 	private String normalMessage;
 	private String defeatMessage;
 
-	/**
-	 * 
-	 * @param gridX
-	 * @param gridY
-	 * @param name
-	 * @param maxhp
-	 * @param speed
-	 * @param spriteOffset
-	 * @param map
-	 */
+/**
+ * 
+ * @param normalMessage	the normal message the enemy prints
+ * @param defeatMessage	the message the enemy prints if it has been defeated
+ */
 	public Enemy(int gridX, int gridY, String name, int maxhp, int strength,
 			int intelligence, int defense, int resistance, int atk1, int atk2,
 			int atk3, int atk4, int spriteOffset, Map map,
@@ -35,7 +29,7 @@ public class Enemy extends GameObject {
 	}
 
 	/**
-	 * 
+	 * updates the enemy, very basic AI that just makes it move or look around randomly
 	 */
 	@Override
 	public void update() {

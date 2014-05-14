@@ -11,7 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
- * 
+ * the window displayed when the player wins the game
  */
 public class WinWindow implements Window {
 	Input input;
@@ -21,8 +21,11 @@ public class WinWindow implements Window {
 	private final TrueTypeFont ttf42 = new TrueTypeFont(new Font("Verdana",
 			Font.PLAIN, 42), true);
 
+
 	/**
 	 *
+	 * @param input the input handler
+	 * @throws SlickException
 	 */
 	public WinWindow(Input input) throws SlickException {
 		this.input = input;
@@ -40,7 +43,7 @@ public class WinWindow implements Window {
 		// TODO Auto-generated method stub
 		if (input.isKeyPressed(Input.KEY_X)
 				|| input.isKeyPressed(Input.KEY_RCONTROL)) {
-			nextWindow = new MenuWindow(input, new Player(7, 6, "DU", 80, 5, 5,
+			nextWindow = new MenuWindow(input, new Player(7, 6, "You", 80, 5, 5,
 					10, 10, 0, 1, 2, 3, 0, new Map("map1")));
 		}
 	}
@@ -64,7 +67,7 @@ public class WinWindow implements Window {
 	}
 
 	/**
-	 * 
+	 * handles window transitions. 
 	 */
 	@Override
 	public Window getNextWindow() {

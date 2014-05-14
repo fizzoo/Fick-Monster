@@ -7,8 +7,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.TrueTypeFont;
 
 /**
- * 
- * @author Alex
+ * The message box class is used to create and print a message to the screen. 
  * 
  */
 public class MessageBox {
@@ -49,7 +48,7 @@ public class MessageBox {
 	}
 
 	/**
-	 * 
+	 * uppdates how much of the message is to be displayed 
 	 */
 	public void update() {
 		i++;

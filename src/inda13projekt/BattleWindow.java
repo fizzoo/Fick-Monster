@@ -1,7 +1,6 @@
 package inda13projekt;
 
 import java.awt.Font;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,7 +19,6 @@ import org.newdawn.slick.particles.ParticleSystem;
 /**
  * Manages input, logic and drawing whilst in the battle screen.
  * 
- * @author Fizzo
  * 
  */
 public class BattleWindow implements Window {
@@ -32,10 +30,7 @@ public class BattleWindow implements Window {
 	private int currentButton;
 	private Random rand;
 	private int playerOldDir, opponentOldDir;
-	private final TrueTypeFont ttf32 = new TrueTypeFont(new Font("Verdana",
-			Font.PLAIN, 32), true);
-	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
-			Font.PLAIN, 20), true);
+	
 	private String textTop;
 	private String textBottom;
 	private boolean won;
@@ -45,14 +40,19 @@ public class BattleWindow implements Window {
 	private int opponentx;
 	private ParticleSystem particles;
 	private ConfigurableEmitter emitter;
+	
+	private final TrueTypeFont ttf32 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 32), true);
+	private final TrueTypeFont ttf20 = new TrueTypeFont(new Font("Verdana",
+			Font.PLAIN, 20), true);
 
 	/**
 	 * Starts a battle screen
 	 * 
-	 * @param input
-	 * @param player
-	 * @param opponent
-	 * @throws SlickException
+	 * @param input	needed to handle input
+	 * @param player	the player
+	 * @param opponent	the opponent the player will battle
+	 * @throws SlickException	is thrown if there is an issue with reading the immages for the buttons.
 	 */
 	public BattleWindow(Input input, Player player, Enemy opponent)
 			throws SlickException {
@@ -86,10 +86,6 @@ public class BattleWindow implements Window {
 						"res/battle_button_hover.png"), new Image(
 						"res/battle_button_normal.png")));
 
-		// buttons.add(new Button(520, 400, 128, 64, "Run", 4, new Image(
-		// "res/battle_button_hover.png"), new Image(
-		// "res/battle_button_normal.png")));
-
 		currentButton = 0;
 		buttons.get(currentButton).setImage(true);
 
@@ -103,9 +99,11 @@ public class BattleWindow implements Window {
 		playerAttacking = false;
 		opponentAttacking = false;
 
+		//())
+		
 		try {
 			particles = new ParticleSystem(new Image("res/particle.png"), 5000);
-			emitter = ParticleIO.loadEmitter(new File("res/particle.xml"));
+			emitter = ParticleIO.loadEmitter(this.getClass().getResourceAsStream("res/particle.xml"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -113,9 +111,13 @@ public class BattleWindow implements Window {
 
 	/**
 	 * Checks for input and updates all objects.
+	 * 
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
+		/**
+		 * logiv for when the player is attacking the opponent
+		 */
 		if (playerAttacking) {
 			playerx += 8;
 			if (playerx > opponentx - 32) {
@@ -140,6 +142,9 @@ public class BattleWindow implements Window {
 			}
 		} else if (playerx > 144) {
 			playerx -= 8;
+			/**
+			 * logic for when the opponent is attacking the player
+			 */
 		} else if (opponentAttacking) {
 			opponentx -= 8;
 			if (opponentx < playerx + 32) {
@@ -168,10 +173,12 @@ public class BattleWindow implements Window {
 				}
 			}
 
+			//if the players hp gets to low he/ she will lose the game
 			if (player.getHp() <= 0) {
 				nextWindow = new GameOverWindow(input);
 			}
 		}
+		//clears the input queue, to make sure nothing bad happens if the player is spamming x
 		this.input.clearKeyPressedRecord();
 		particles.update(delta);
 	}

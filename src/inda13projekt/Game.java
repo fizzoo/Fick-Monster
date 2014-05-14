@@ -10,7 +10,6 @@ import org.newdawn.slick.SlickException;
 /**
  * Starts the game and handles it's loop
  * 
- * @author Alex Sundström
  * 
  */
 public class Game extends BasicGame {

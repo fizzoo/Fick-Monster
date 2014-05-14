@@ -4,8 +4,6 @@ package inda13projekt;
  * The camera is used to keep track of the offset used to render the tilemap and
  * objects
  * 
- * @author Alex
- * 
  */
 public class Camera {
 	private int xOffset;
